@@ -13,7 +13,7 @@ characteristics.
 Features include but are not limited to:
 
  - "tree view", which is a visualization tool for viewing the children of a given individual in a family tree like structure
-[  https://gyazo.com/83e1788cd815af940ed616ecac4e4beb](https://gyazo.com/83e1788cd815af940ed616ecac4e4beb)
+![Tree View](https://gyazo.com/83e1788cd815af940ed616ecac4e4beb)
 
  - "grid view", a simplified view of individuals of a particular species that can be filtered and sorted at a fine granularity
 
