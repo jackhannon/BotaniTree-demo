@@ -1,0 +1,403 @@
+/* tree styles */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+.emptyTreeContainer {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.emptyTreeContainer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.emptyTreeContainer button  {
+  background-color: rgb(160, 214, 160);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-weight: 400;
+  padding: .3rem .6rem;
+  transition: all .3s;
+}
+
+.emptyTreeContainer button:hover {
+  background-color: rgb(118, 193, 118);
+
+}
+
+.emptyTreeContainer button svg {
+  margin-right: 5px;
+}
+
+.panContainer {
+  min-height: 100vh;
+  max-height: 100vh;
+  max-width: 100%;
+  min-width: 100%;
+  /* padding: 5px; */
+
+}
+
+.treeContainer {
+  display: flex;
+  justify-content: center;
+  min-width: 100%;
+  align-items: center;
+}
+
+
+
+.treeContainer ul {
+  gap: 1.2rem;
+  text-decoration: none;
+	list-style-type: none;
+  padding-top: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* transition: width linear .3s; */
+}
+
+
+.treeContainer > ul {
+  text-decoration: none;
+  /* transition: width linear .3s; */
+	list-style-type: none;
+  padding-top: 0px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.treeContainer ul li {
+  text-decoration: none;
+  /* transition: width .3s; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  position: relative;
+	padding: 20px 0 0 0;
+}
+
+.child {
+  animation: fade-in .5s;
+}
+
+.treeContainer ul li::before, 
+.treeContainer  li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+	border-top: 1px solid #ccc;
+  width: 55%;
+  height: 20px;
+}
+
+.treeContainer ul li::after{
+	right: auto; 
+  left: 50%;
+	border-left: 1px solid #ccc;
+}
+
+.treeContainer ul li:only-child::after, .treeContainer ul li:only-child::before {
+	display: none;
+}
+
+.treeContainer ul li:only-child{ padding-top: 0;}
+
+ul li:first-child::before, .treeContainer ul li:last-child::after{
+	border: 0 none;
+}
+
+.treeContainer ul li:last-child::before{
+	border-right: 1px solid #ccc;
+	border-radius: 0 5px 0 0;
+}
+
+.treeContainer ul li:first-child::after{
+	border-radius: 5px 0 0 0;
+}
+
+.treeContainer ul ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+	border-left: 1px solid #ccc;
+  width: 0;
+  height: 40px;
+}
+
+
+
+.treeContainer ul li > .nodeContent:hover+ul li::after,
+.treeContainer ul li > .nodeContent:hover+ul li::before,
+.treeContainer ul li > .nodeContent:hover+ul::before,
+.treeContainer ul li > .nodeContent:hover+ul ul::before,
+
+
+.treeContainer ul li .nodeContainer:hover~ul li::after,
+.treeContainer ul li .nodeContainer:hover~ul li::before,
+.treeContainer ul li .nodeContainer:hover~ul::before,
+.treeContainer ul li .nodeContainer:hover~ul ul::before
+{
+	border-color:  #94a0b4 !important;
+}
+
+
+.treeContainer ul li > .parentFocused+ul li::after,
+.treeContainer ul li > .parentFocused+ul li::before,
+.treeContainer ul li > .parentFocused+ul::before,
+.treeContainer ul li > .parentFocused+ul ul::before,
+
+
+.treeContainer ul li .nodeContainer:hover~ul li::after,
+.treeContainer ul li .nodeContainer:hover~ul li::before,
+.treeContainer ul li .nodeContainer:hover~ul::before,
+.treeContainer ul li .nodeContainer:hover~ul ul::before
+{
+	border-color:  #94a0b4 !important;
+}
+
+
+.parentFocused > div span, 
+.parentFocused .nodeContainer span {
+	background-color: #c8e4f8; 
+}
+
+.parentUnFocused {
+	background-color: #ffffff; 
+}
+
+
+
+
+
+
+
+/* aggregate styles */
+
+
+
+.aggregateNodeContainer:hover .aggregateNode {
+  transform: translateY(-40%);
+  z-index: 999;
+}
+
+.child:hover {
+  z-index: 998;
+}
+
+.nodeContainer {
+  transition: all 0.5s;
+  position: absolute;
+  top: 0;
+  display: flex;
+  width: min-content;
+  justify-content: center;
+  z-index: 0;
+}
+
+.nodeContainer:hover {
+  z-index: 999;
+}
+
+.shaded {
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+.siblingCounter {
+  position: absolute;
+  right: -.5rem;
+  top: -.5rem;
+  z-index: 1000;
+}
+
+.expandSiblingsButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+  font-size: .9rem;
+  width: 1.5rem;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+.pseudoContainer {
+  border: 1px solid transparent;
+  height: 10rem;
+  min-width: 11rem;
+  max-width: 11rem;
+  z-index: 0;
+}
+
+.leftPseudoContainer {
+  height: 10rem;
+  min-width: 11rem;
+  max-width: 11rem;
+  z-index: 0;
+  padding-right: 18px;
+}
+
+.fatherContainer {
+  position: relative;
+  visibility: hidden;
+}
+
+.fatherContainer:hover .nodeInfo {
+  background-color: #c8e4f8; 
+}
+
+.paginateMatesContainer {
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  z-index: 1000;
+}
+
+.paginateMatesContainer button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 1px solid black;
+  border-radius: 25px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  transition: 0.3s all;
+}
+
+.fatherContainerOfActive {
+  position: absolute;
+  transform: translateX(188px);
+  margin-left: 1rem;
+}
+
+.parentsContainer {
+  width: 40.5rem;
+  gap: 1.2rem;
+  height: 10rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parentsContainer._cardContent_zjuja_57 {
+  z-index: 2;
+}
+
+.hasNoChildren {
+  min-height: 14rem;
+  position: relative;
+  display: flex;
+  align-items: top;
+  justify-content: center;
+}
+
+
+
+/* .aggregateParentsContainer {
+  width: 573px;
+  min-height: 11rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.nodeContent:hover > .fatherContainer::after, 
+.nodeContent:hover > .fatherContainer::before {
+  border-color: #94a0b4;
+} 
+
+
+.fatherContainer::before {
+  content: "";
+  border-bottom: 1px solid #747474;
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  /* right: 177px; */
+  right: 99%;
+  transform: rotate(25deg);
+
+}
+
+.fatherContainer::after {
+  content: "";
+  border-bottom: 1px solid #747474;
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  /* right: 177px; */
+  right: 99%;
+  transform: rotate(-25deg);
+}
+
+.addChildPosition {
+  position: absolute;
+  bottom: -32px;
+  left: 53%;
+  z-index: 998;
+}
+
+.addFirstChildPosition {
+  position: absolute;
+  bottom: 31px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* z-index: 999; */
+}
+
+.addChild {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 1px solid black;
+  border-radius: 25px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  transition: 0.3s all;
+}
+
+
+
+
+.addChild:hover {
+  background-color: rgb(149, 239, 156);
+}
+
+
+
+

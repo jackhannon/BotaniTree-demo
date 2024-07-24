@@ -1,0 +1,160 @@
+
+.viewHeader {
+  top: 0px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  padding: .4em .4em .4em 1em;
+  width: 100%;
+  background-color: transparent;
+  z-index: 999;
+}
+
+.plantName {
+  
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  margin-right: .5rem;
+  max-width: 20rem;
+}
+
+.plantName svg {
+  cursor: pointer;
+  font-size: 1.3rem;
+  margin-right: .9rem;
+}
+
+header {
+  padding: .4em 0 .4em .0em;
+  background-color: #202124;
+  display: flex;
+  justify-content: space-between;
+  grid-template-columns: 1fr 3fr 1fr;
+  width: 100%;
+  border-bottom: 1px solid rgb(116, 116, 116);
+}
+
+
+.left {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.icon {
+  color: inherit;
+}
+
+
+.left button {
+  background: none;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  margin-left: .4rem;
+  margin-right: .4rem;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(105, 102, 102);
+  border-radius: 5px;
+  margin: 0 .4rem 0 .4rem
+}
+
+
+
+.center input {
+  min-width: 1rem;
+}
+
+.center input::placeholder {
+  color: #e8eaed;
+}
+
+.center button {
+  color: inherit;
+
+  background-color: transparent;
+  padding: 0.6em 1em;
+  font-size: 1rem;
+  position: relative;
+}
+
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  margin-right: .4rem;
+  min-width: 123px;
+  justify-content: right;
+}
+
+.option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  min-width: 2.5rem;
+  max-width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  padding: 0.6em 1em;
+  font-size: 1em;
+  color:inherit
+
+}
+.noteSelectBtn {
+  border-radius: 50%;
+  color:inherit
+
+}
+.noteSelectBtn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.removePin {
+  background-color: rgb(104, 102, 102);
+}
+
+.clearInputButton {
+  opacity: 0;
+}
+
+
+
+
+
+@media (max-width: 700px) { 
+  .right {
+    display: flex;
+    justify-content: right;
+    gap: 0rem;
+    width: auto;
+    min-width: 5rem
+  }
+
+  .left {
+    display: flex;
+    justify-content: space-between;
+    gap: 0rem;
+    width: auto;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    min-width: 2rem;
+    width: auto;
+    position: relative;
+  }
+} 
+
+

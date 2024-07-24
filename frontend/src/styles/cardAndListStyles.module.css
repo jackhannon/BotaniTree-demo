@@ -1,0 +1,166 @@
+.listContainer {
+  padding: 0 .7rem .7rem .7rem;
+  justify-content: center;
+  width: 100%;
+  display: grid;
+  gap: 1.2rem;
+  align-content: start;
+}
+
+#individualsListContainer {
+  padding-top: 9.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(176px, 176px));
+
+}
+
+.smallCardSize { 
+  min-width: 11rem;
+  max-width: 11rem;
+  height: 10rem;
+	font-size: .7em;
+}
+
+.largeCardSize { 
+  min-width: 20rem;
+  max-width: 20rem;
+  height: 18rem;
+	font-size: 1em;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000000;
+  border-radius: 6px;
+	text-decoration: none;
+	color: #000000;
+	font-family: arial, verdana, tahoma;
+	transition: all 0.3s;
+  position: relative;
+}
+
+.image {
+  height: 78.5%;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+
+.noImagePlaceholder {
+  display: flex;
+  font-size: 3rem;
+  color: rgb(187, 187, 187);
+  justify-content: center;
+  align-items: center;
+}
+
+
+.cardInfo {
+  background-color: #ffffff; 
+  font-size: .9rem;
+  padding: 5px .5em;
+  height: 21.5%;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  width: 100%;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+	transition: all 0.3s;
+}
+
+.cardInfo p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.cardInfo div div {
+  height: 1.4rem;
+}
+
+.largeCardSize p {
+  font-size: 1.3rem
+}
+
+
+/*.cardInfo svg {
+  font-size: .7rem;
+}*/
+
+.editButton {
+  font-size: 1rem;
+  padding-left: .2rem;
+}
+
+.editButton svg {
+  
+}
+
+.cardInfo button {
+  padding: .7rem;
+  border-radius: 50%;
+  height: 1.4rem;
+  width: 1.4rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+}
+
+/* .cardInfo button:hover {
+  background-color: rgb(221, 221, 221);
+} */
+
+
+
+
+
+
+.addItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(160, 214, 160);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  font-size: 1.5em;
+  font-weight: 500;
+  background-color: rgb(160, 214, 160);
+}
+
+.addBtn svg {
+  height: 4em;
+  width: 4em;
+}
+
+
+
+#speciesListContainer {
+  padding-top: 4.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 20rem));
+  grid-template-rows: repeat(auto-fit, minmax(18rem, 18rem));
+
+}
+
+#speciesListContainer .cardInfo button {
+  height: 1.7rem;
+  width: 1.7rem;
+  margin-right: .5rem;
+}
+

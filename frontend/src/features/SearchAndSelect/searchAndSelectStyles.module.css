@@ -1,0 +1,62 @@
+.selectionContainer {
+  position: relative;
+  display: flex;
+}
+
+.selectionControls {
+  display: flex;
+  padding: .2rem .2rem .2rem .2rem;
+  width: 100%;
+  color: black;
+  white-space: nowrap;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.dropDownButton {
+  background-color: transparent;
+}
+
+.input {
+  border: none;
+  font-size: .8rem;
+  height: 100%;
+  width: 100%;
+  color: black;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.resultContainer  {
+  top: 1.30rem;
+  position:absolute;
+  list-style: none;
+  max-height: 9rem;
+  width: 100%;
+  z-index: 1;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  border-top: none;
+  overflow-y: auto;
+}
+
+.resultContainer li {
+  padding: .2rem .3rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resultContainer li:hover, .activeResult {
+  background-color: #bbbbbbb5;
+}
+
+
+.resultContainer li:last-child {
+  border-bottom: none;
+}
+
+

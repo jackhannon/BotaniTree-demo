@@ -1,0 +1,395 @@
+.cardContainer {
+  position:fixed;
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  height: 100vh;
+  top: 0;
+  background-color: rgb(255, 255, 255);
+  z-index: 998;
+}
+
+@media screen and (max-width: 500px) {
+  .cardContainer {
+    position:fixed;
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    z-index: 998;
+  }
+}
+
+.showCard {
+  right: 0;
+}
+
+.showNewCard {
+  right: 0;
+  z-index: 1000;
+}
+
+.hideCard {
+  right: -25rem;
+  transition: right 0.2s;
+}
+
+.visibleCard {
+  opacity: 1;
+  transition: opacity 1s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.invisibleCard {
+  opacity: 0;
+  height: 100%;
+}
+
+
+
+.toggleInfoCardPosition {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -1.24rem;
+  padding: .1rem 0 ;
+  font-size: 1.8rem;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left:1px solid black;
+  border-radius: 4px 0 0 4px ;
+  background-color: white;
+}
+
+.toggleInfoCard {
+  
+  /* transform:scaleY(1.3);
+  
+  background-color: white; */
+}
+
+.closeInfoCard svg {
+  color: rgb(98, 96, 96);
+}
+
+
+
+
+.image {
+  max-height: 18rem;
+  width: 100%;
+  object-fit:cover;
+}
+
+.info {
+  text-align: left;
+  padding: .4rem;
+  border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+
+
+.activeTabContents {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* new info card */
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  max-height: 17rem;
+  width: 100%;
+}
+
+
+/* .imageContainer input {
+  
+} */
+
+.uploadButtonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem
+}
+
+.customFileUpload  {
+
+}
+
+/* .imageContainer span {
+} */
+
+
+
+.placeholderImage {
+  max-height: 10rem;
+  width: 10rem;
+  object-fit:cover;
+}
+
+.hiddenFileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+
+.nameContainer svg {
+  font-size:1.1rem;
+  color: #000000;
+  /* height: 18px;
+  width: 18px; */
+}
+
+.nameContainer {
+  gap: .5rem;
+  width: 100%;
+  display:flex;
+  align-items: center;
+  position: relative;
+}
+
+.nameContainer span, .nameContainer input {
+  border: none;
+  font-size: 1rem;
+}
+
+
+
+.nameContainer button {
+  border-radius: 25px;
+  height: 28px;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .7rem
+}
+
+.nameContainer button:hover {
+  background-color: #bcbec2;
+
+}
+
+
+.nameContainer .input {
+  border-bottom: 1px solid #727272;
+  padding: 0;
+
+  width:65%;
+}
+
+.nameInputLabel {
+  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: bold;
+
+}
+
+
+.confirmationButtons {
+  position: absolute;
+  z-index: 999;
+  right: 0;
+  padding: .5rem .5rem 0 0;
+  display: flex;
+  gap: .7rem
+}
+
+
+.confirmationButtons > button {
+  padding: .7rem;
+  border-radius: 25px;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmationButtons > button:hover {
+
+}
+
+
+.edit {
+  position: absolute;
+  right: .5rem;
+  top: .5rem;
+  background-color:rgba(0, 0, 0, 0.2);
+  padding: .5rem;
+  border-radius: 25px;
+}
+
+.edit:hover {
+  background-color:rgba(0, 0, 0, 0.1);
+}
+
+.edit svg {
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+#disgard {
+  background-color: rgba(229, 5, 5, 0.553)
+}
+
+#confirm {
+  background-color: rgba(21, 246, 13, 0.186)
+}
+
+#delete {
+  background-color: rgba(229, 5, 5, 0.553);
+  font-size: .9rem;
+}
+
+
+
+#disgard:hover, #delete:hover {
+  background-color: rgba(229, 5, 5, 0.793)
+}
+
+#confirm:enabled:hover {
+  background-color: rgba(21, 246, 13, 0.549)
+}
+
+
+.instructions {
+  z-index: 999;
+  align-items: center;
+  width: auto;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  background-color: #727272;
+  padding: 0.25rem;
+  position: absolute;
+  display: flex;
+  overflow-wrap: break-word;
+  top: 2rem;
+  gap: .3rem
+}
+
+
+
+
+/* extra info buttons */
+
+.extraInfoButtons {
+  gap: 1rem;
+}
+
+
+.bottomRowInfoBox {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.clonedIndividual {
+  background-color: rgb(0, 225, 255, 0.553);
+}
+
+.deadIndividual {
+  background-color: rgba(229, 5, 5, 0.553);
+}
+
+.artificialIndividual {
+  background-color: rgb(22, 255, 115, 0.553);
+}
+
+.notClonedIndividual {
+  background-color: rgb(0, 225, 255, 0.2);
+}
+
+.notDeadIndividual {
+  background-color: rgba(229, 5, 5, 0.2);
+}
+
+.notArtificialIndividual {
+  background-color: rgba(22, 255, 115, 0.2);
+}
+
+.editExtraInfoButton {
+  position: relative;
+  gap: .5rem
+}
+
+.hoverEditButtonFirstFromRight {
+  left: 0 !important;
+ }
+
+.hoverEditButtonSecondFromRight {
+ left: -20px !important;
+}
+
+
+.hoverButtonFirstFromRight {
+  left: -40px !important;
+ }
+
+.hoverButtonSecondFromRight {
+ left: -20px !important;
+}
+
+
+.hoverButtonLabelLeft {
+  right: 0;
+  left: initial !important;
+  transform: initial !important
+}
+
+.chart {
+  padding: 0 1rem
+}
+
+
+.barChart {
+  padding: 0 1rem;
+  display: flex;
+  
+  height: 20rem;
+  max-height: 20rem;
+}

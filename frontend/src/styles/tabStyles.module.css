@@ -1,0 +1,27 @@
+.navTab {
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  padding: 1rem 1rem .85rem 1rem;
+  width: 100%;
+  color: rgb(194, 194, 194);
+
+ }
+
+
+
+.active {
+  border-bottom: 1px solid rgb(194, 194, 194);
+  transition: border-bottom 0.2s ease-in-out;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+
+}   
+
+.navTab:hover {
+  background-color: #bcbcbc6b;
+}
+
+.tabContainer {
+  margin-bottom: .8rem;
+  display: flex;
+}

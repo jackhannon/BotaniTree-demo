@@ -1,0 +1,140 @@
+
+#root {
+  text-align: center;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  background-color: #f0f0f0;
+}
+
+.loadingContainer {
+  display: block;
+  margin: auto;
+}
+
+
+.hoverButton {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  color: rgb(0, 0, 0);
+  padding: .7rem;
+  font-size: 1.3em;
+  border-radius: 50%;
+  height: 1.4rem;
+  width: 1.4rem;
+  border: 1px solid black;
+}
+
+.defaultPositioning {
+  position: relative;
+}
+
+.buttonLabel {
+  position: absolute;
+  /* position: fixed; */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size:.8rem;
+  border: .5px solid black;
+  background-color: rgb(255, 255, 255);
+  padding: .3rem .6rem;
+  white-space: nowrap;
+  z-index: 1000;
+  border-radius: 4px;
+  transition: opacity .2s;
+}
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+.fadeInElement {
+  animation: fade-in 300ms;
+}
+div .fadeInElement {
+  animation: fade-in 300ms;
+  visibility: visible;
+}
+
+
+.fadeInElementQuick {
+  animation: fade-in .5s;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 100;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
+.fadeOutElement {
+  animation: fade-out 300ms;
+}
+
+div .fadeOutElement {
+  animation: fade-out 300ms;
+  visibility: hidden;
+}
+
+.fadeOutElementQuick {
+  animation: fade-out .5s;
+}
+
+.hide {
+  position: absolute;
+  opacity: 0;
+  z-index: -100;
+  white-space: pre;
+}
+
+input {
+ border: 1px solid black;
+ border-radius: 2px;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+
+.showInstructions {
+  display: flex;
+}
+
+.container {
+
+}
+
+.row {
+  display: flex;
+}
+
+
+ 
+.small-circle-with-icon {
+  padding: .5rem;
+  border-radius: 25px;
+  height: 1.8rem;
+  width: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.small-circle-with-icon svg {
+
+}
+
+

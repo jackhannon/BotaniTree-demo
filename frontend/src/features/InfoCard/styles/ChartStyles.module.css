@@ -1,0 +1,20 @@
+.labelsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .5rem;
+}
+
+.substrateLegend {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.label {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  position: relative;
+  gap: .2rem
+}

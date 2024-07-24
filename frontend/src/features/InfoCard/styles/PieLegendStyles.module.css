@@ -1,0 +1,85 @@
+.pieChart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 .5rem;
+  font-size: .8rem;
+}
+
+.substrateLegendGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.substrateLegend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+
+.btnsContainer {
+  display: flex;
+  
+}
+
+.addLabelButton {
+  margin:0 auto;
+}
+
+
+
+.addLabelButton svg{
+  margin: 0 .3rem;
+}
+
+.label {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.colorBox {
+  height: 1.2rem;
+  width: 1.2rem;
+  margin-right: .3rem;
+  position: relative;
+}
+
+.deleteLabelIcon {
+  background-color: rgba(229, 5, 5, 0.553);
+  padding: .3rem;
+  border-radius: 50px;
+  height: 1.3rem;
+  width: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: .3rem;
+}
+
+.colorPicker{
+  z-index: 999;
+  position: absolute;
+  top: 1.2rem;
+}
+
+.colorPicker > div {
+  width: 180px;
+  height: 180px;
+}
+
+.labelInput {
+  width: 6.5rem;
+  padding: 0 .1rem;
+}
+
+.percentInput {
+  width: 2.3rem;
+  
+}

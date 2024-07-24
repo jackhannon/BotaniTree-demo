@@ -1,0 +1,125 @@
+.microTreeContainer {
+  display: flex;
+  justify-content: center;
+}
+
+/* .microTreeContainer > ul > li > div > span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+	border-top: 1px solid #ccc;
+  width: 55%;
+  height: 20px;
+} */
+
+
+.parentsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+/* .microTreeContainer img{
+  height: 7rem;
+  width: 9.6rem;
+} */
+
+.microTreeContainer .subUlContainer {
+  gap: 20px;
+  text-decoration: none;
+	list-style-type: none;
+  position: relative;
+  display: flex;
+  justify-content: center;
+} 
+
+.microTreeContainer > .subUlContainer {
+  text-decoration: none;
+  transition: width 0.3s;
+	list-style-type: none;
+  padding-top: 0px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+} 
+
+/* .microTreeContainer  > ul ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+	border-left: 1px solid #ccc;
+  width: 0;
+  height: 20px;
+} */
+
+.microTreeContainer .subUlContainer .subUlContainer .subLiContainer {
+  width: auto;
+  text-decoration: none;
+  transition: width 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+	padding: 20px 0 0 0;
+}
+
+
+
+
+/* .microTreeContainer ul ul li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+	border-left: 1px solid #ccc;
+  height: 20px;
+} */
+
+
+.microTreeContainer .subUlContainer .subUlContainer .subLiContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+	border-top: 1px solid #ccc;
+  width: 50%;
+  height: 20px;
+  border-right: 1px solid #ccc;
+  border-top-right-radius: 5px;
+}
+
+.microTreeContainer .subUlContainer .subUlContainer .subLiContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+	border-top: 1px solid #ccc;
+  width: 50%;
+  height: 20px;
+  border-right: 1px solid #ccc;
+  border-top-right-radius: 5px;
+}
+
+
+.parentsContainer {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.parentsContainer::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 25%;
+	border-bottom: 1px solid #ccc;
+  width: 1%;
+  height: 20px;
+  border-left: 1px solid #ccc;
+  border-bottom-left-radius: 5px;
+}
+
+

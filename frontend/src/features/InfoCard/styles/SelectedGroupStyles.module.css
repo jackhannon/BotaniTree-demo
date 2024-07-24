@@ -1,0 +1,120 @@
+.group {
+  font-size: .8rem;
+  color:  #94a0b4;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.group > span:hover {
+  text-decoration: underline;
+}
+
+.selectionContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+.groupResults {
+  position: absolute;
+}
+
+.changeGroupsBtn {
+  background-color: transparent;
+  margin-left: .4rem;
+  border-radius: 25px;
+  height: 1.3rem;
+  width: auto;
+  gap: 3px;
+}
+
+.setInitialGroupBtn {
+  border-radius: 25px;
+  height: 1.3rem;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  gap: 6px;
+}
+
+.setInitialGroupBtn {
+
+}
+
+.changeGroupsBtn > svg {
+  font-size: .8rem;
+}
+
+.check {
+   color: rgb(108, 172, 11);
+}
+
+.check:hover {
+  background-color: #e0e0e0;
+
+
+}
+
+
+.input {
+  padding: .2rem 1.3rem .2rem .2rem;
+  height: 1.3rem;
+  width: 10rem;
+  color: black;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  border: 1px solid black;
+
+}
+
+.active {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.dropDownButton {
+  position: absolute;
+  right:5px;
+  transform: translateY(-50%);
+  top:50%;
+  background-color: transparent;
+}
+
+
+.groupSelectionControls {
+  position: relative;
+}
+
+.group ul {
+  top: 1.30rem;
+  position: absolute;
+  list-style: none;
+  width: 100%;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  border-top: none;
+
+}
+
+.group ul li {
+  padding: .2rem .3rem;
+}
+
+.group ul li:hover, .activeResult {
+  background-color: #bbbbbbb5;
+}
+
+
+.group ul li:last-child {
+  border-bottom: none;
+}
+
+
+
