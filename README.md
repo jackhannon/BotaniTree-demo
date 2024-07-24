@@ -1,6 +1,6 @@
 DISCLAIMER: This is a non-persistant demo application that demonstrates the highest value features of Botanical Lineage Tracker in a simple to access way. The information regarding technologies used does not fully apply to the this demo.
 
-Botanical Lineage Tracker is a wep app that allows users to keep track of, and visualize the familial relationships of the specific plant species individuals.
+Botanical Lineage Tracker is a web app that allows users to keep track of, and visualize the familial relationships of the specific plant species individuals.
 
 An example of the problem domain would suffice in understanding the utility of this application:
 
