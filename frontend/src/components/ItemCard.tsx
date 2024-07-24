@@ -3,18 +3,19 @@ import CardStyles from '../styles/cardAndListStyles.module.css'
 import { ReactNode } from '@tanstack/react-router'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 type Props = {
-  image?: string,
-  name?: string,
-  id?: number,
+  image?: string;
+  name?: string;
+  id?: number;
   handleClick?: (id: number) => void;
   sizeStyles: string;
   hovered?: boolean;
-  handleHover?: (id:number) => void;
+  handleHover?: (id: number) => void;
   handleUnHover?: () => void;
   imageDimensions: {width: number, height?: number};
-  children: ReactNode,
-  styles?: string
+  children: ReactNode;
+  styles?: string;
 }
+
 const ItemCard: React.FC<Props> = ({image, id, handleClick = ()=>{}, sizeStyles, styles, imageDimensions, handleHover = ()=>{}, handleUnHover = ()=>{}, children}) => {
   return (
     <div 

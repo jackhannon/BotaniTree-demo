@@ -41,7 +41,6 @@ export const PlantProvider: React.FC<ProviderProps> = ({children}) => {
 
   function addPlant(plant: Individual) {
     plants.push(plant)
-    console.log(plants)
   }
 
   function removePlant(id: number) {
@@ -69,6 +68,7 @@ export const PlantProvider: React.FC<ProviderProps> = ({children}) => {
   }
 
   function changeSpecies(modifiedSpecies: Species) {
+    console.log(modifiedSpecies)
     const index = species.findIndex(plant => plant.id === modifiedSpecies.id)
     species.splice(index, 1, modifiedSpecies)
   }
