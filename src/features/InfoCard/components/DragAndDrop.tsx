@@ -51,7 +51,7 @@ const DragAndDrop:React.FC<Props> = ({images, setImages}) => {
 
   const handleDrop = async (event: React.DragEvent) => {
     event.preventDefault();
-    let droppedFiles = event.dataTransfer.files;
+    let droppedFiles:FileList | File[] = event.dataTransfer.files;
     if (droppedFiles.length + images.length > 5) {
       const remainingSpots = 5 - images.length;
       droppedFiles = Array.from(droppedFiles).slice(0, remainingSpots)

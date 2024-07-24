@@ -1,3 +1,5 @@
+import { DeltaStatic } from "quill";
+
 export type Individual = {
   name: string
   images: string[]
@@ -86,12 +88,12 @@ export type WaterEntry = {
 
 export type Group =  {
   name: string;
-  images: string[];
+  images?: string[];
   id: number;
-  description_html: string
-  description_delta: DeltaStatic
-  water_values: WaterEntry[];
-  substrate_values: SubstrateEntry[]
-  light_value: number
-  species_id: number
+  description_html?: string
+  description_delta?: DeltaStatic
+  water_values?: WaterEntry[];
+  substrate_values?: SubstrateEntry[]
+  light_value?: number
+  species_id?: number
 }

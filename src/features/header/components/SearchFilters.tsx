@@ -110,7 +110,7 @@ const SearchFilters = () => {
               step={0.1}
               placeholder='min frequency'
               value={filters.waterRange.minWater}
-              onChange={(e) => handleFilterChange({waterRange: {...filters.waterRange, minWater: e.target.value === "" ? "" : Number(e.target.value)}})}
+              onChange={(e) => handleFilterChange({waterRange: {...filters.waterRange, minWater: e.target.value === "" ? undefined  : Number(e.target.value)}})}
             />
              and
             <input
@@ -120,7 +120,7 @@ const SearchFilters = () => {
               step={0.1}
               placeholder='max frequency'
               value={filters.waterRange.maxWater}
-              onChange={(e) => handleFilterChange({waterRange: {...filters.waterRange, maxWater: e.target.value === "" ? "" : Number(e.target.value)}})}
+              onChange={(e) => handleFilterChange({waterRange: {...filters.waterRange, maxWater: e.target.value === "" ? undefined  : Number(e.target.value)}})}
             />
           </div>
         </div>
@@ -137,7 +137,7 @@ const SearchFilters = () => {
               step={0.1}
               placeholder='min years'
               value={filters.ageRange.minAge}
-              onChange={(e) => handleFilterChange({ageRange: {...filters.ageRange, minAge: e.target.value === "" ? "" : Number(e.target.value)}})}
+              onChange={(e) => handleFilterChange({ageRange: {...filters.ageRange, minAge: e.target.value === "" ? undefined  : Number(e.target.value)}})}
             />
             and
             <input
@@ -147,7 +147,7 @@ const SearchFilters = () => {
               step={0.1}
               placeholder='max years'
               value={filters.ageRange.maxAge}
-              onChange={(e) => handleFilterChange({ageRange: {...filters.ageRange, maxAge: e.target.value === "" ? "" : Number(e.target.value)}})}
+              onChange={(e) => handleFilterChange({ageRange: {...filters.ageRange, maxAge: e.target.value === "" ? undefined : Number(e.target.value)}})}
             />
           </div>
         </div>
@@ -161,7 +161,7 @@ const SearchFilters = () => {
               min={0}
               placeholder='max hours'
               value={filters.lightRange.minLight}
-              onChange={(e) => handleFilterChange({lightRange: {...filters.lightRange, minLight: e.target.value === "" ? "" : Number(e.target.value)}})}
+              onChange={(e) => handleFilterChange({lightRange: {...filters.lightRange, minLight: e.target.value === "" ? undefined : Number(e.target.value)}})}
             />
              and
             <input
@@ -170,7 +170,7 @@ const SearchFilters = () => {
               min={0}
               placeholder='min hours'
               value={filters.lightRange.maxLight}
-              onChange={(e) => handleFilterChange({lightRange: {...filters.lightRange, maxLight: e.target.value === "" ? "" : Number(e.target.value)}})}
+              onChange={(e) => handleFilterChange({lightRange: {...filters.lightRange, maxLight: e.target.value === "" ? undefined : Number(e.target.value)}})}
             />
           </div>
         </div>

@@ -1,11 +1,10 @@
-import { useSelector } from "react-redux"
 import PieLegendStyles from "../styles/PieLegendStyles.module.css"
 import InfoBox from "../../../components/InfoBox"
 import InfoCardStyles from '../styles/InfoCardStyles.module.css'
 import {useRef, useState } from "react"
 import { HexColorPicker } from "react-colorful";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faX, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { useInfoCardContext } from "../../../context/InfoCardContext"
 
 type Props = {

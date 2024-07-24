@@ -12,8 +12,8 @@ type Props = {
 const SelectedGroup: React.FC<Props> = ({selectedGroup, setGroup}) => {
   const [isGroupBeingChanged, setIsGroupBeingChanged] = useState(false)
   const [groupDropDownState, setGroupDropDownState] = useState(false)
-  const [groupQuery, setGroupQuery] = useState<string>("")
-  const [groupQueryResult, setGroupQueryResult] = useState<Group[]>([])
+  const [groupQuery] = useState<string>("")
+  const [groupQueryResult] = useState<Group[]>([])
   const [hoveredResultIndex, setHoveredResultIndex] = useState(0)
 
 
@@ -21,7 +21,7 @@ const SelectedGroup: React.FC<Props> = ({selectedGroup, setGroup}) => {
   const handleGroupSelect = (e: React.MouseEvent<HTMLUListElement>) => {
     const target = e.target as HTMLElement;
     if (target.dataset.id) {
-      setGroup({id: target.dataset.id, name: target.textContent || ""});
+      setGroup({id: Number(target.dataset.id), name: target.textContent || ""});
       setGroupDropDownState(false);
     }
   }
