@@ -14,30 +14,39 @@ type Props = {
 const DragAndDrop:React.FC<Props> = ({images, setImages}) => {
   const [info, setInfo] = useState("")
   
-  const readFile = (file: File) => {
+  const readFile = (file: File): Promise<string> => {
     const reader = new FileReader()
-    return new Promise((resolve, reject) => {
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
+    return new Promise((resolve: (value: string) => void, reject) => {
+      reader.onload = () => {
+        const result = reader.result as string;
+        if (typeof result === 'string') {
+          resolve(result);
+        } else {
+          reject(new Error('Failed to read file as ArrayBuffer or string.'));
+        }
+      };
+  
+      reader.onerror = (error) => reject(error);
+  
+      reader.readAsArrayBuffer(file);
     });
   };
 
 
   const handleManualUpload = async (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files.length > 5) {
+    if (event?.target?.files?.length ? event?.target?.files?.length > 5 : false) {
       setInfo("Max images reached")
     }
-    const files = Array.from(event.target.files).slice(0, 5);
+    const files = Array.from(event?.target?.files || []).slice(0, 5);
     const images = await Promise.all(files.map(async (file) => {
       try {
-        const imageDataUrl = await readFile(file);
+        const imageDataUrl= await readFile(file);
         return imageDataUrl
       } catch (error) {
         console.error("Error reading file:", error);
       }
     }))
-    setImages(images)
+    setImages(images.filter(image => image !== undefined))
   };
 
   const handleDrop = async (event: React.DragEvent) => {
@@ -60,7 +69,7 @@ const DragAndDrop:React.FC<Props> = ({images, setImages}) => {
       }))
       
       const allImages = images ? [...images, ...newImages] : [...newImages]
-      setImages(allImages);
+      setImages(allImages.filter(image => image !== undefined));
     }
   };
 
@@ -104,12 +113,12 @@ const DragAndDrop:React.FC<Props> = ({images, setImages}) => {
           <div className={DragDropStyles.uploads}>
             <div className={DragDropStyles.row}>
               {images.slice(0,3).map((image, index) => (
-              <Upload key={index+ Date.now()} handleRemoveFile={handleRemoveFile} index={index} image={image}/>
+              <Upload key={index} handleRemoveFile={handleRemoveFile} index={index} image={image}/>
               ))}
             </div>
             <div className={DragDropStyles.row}>
               {images.slice(3).map((image, index) => (
-              <Upload key={index+ Date.now()} handleRemoveFile={handleRemoveFile} index={index} image={image}/>
+              <Upload key={index} handleRemoveFile={handleRemoveFile} index={index} image={image}/>
               ))}
             </div>
             {info && 

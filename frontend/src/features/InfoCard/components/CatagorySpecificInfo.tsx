@@ -142,7 +142,7 @@ const CatagorySpecificInfo:React.FC<Props> = ({name, isClone, isArtificialCondit
                   <div className={`row ${InfoCardStyles.extraInfoButtons}`}>
                     {extraInfoItems.map((item, index)=> (
                       <ButtonWithHoverLabel
-                        key={index + Date.now()}
+                        key={index}
                         label={item.label}
                         positioningStyles={InfoCardStyles.editExtraInfoButton} 
                         labelHoveringPositionStyles={
