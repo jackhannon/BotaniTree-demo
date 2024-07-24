@@ -35,4 +35,3 @@ System Info:
  - Node version - 18.12.1
  - Browser and version - Chrome version 124.0.6367.203
  - Postgres version - 16.1
-
