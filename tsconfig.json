@@ -18,8 +18,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
   },
   "include": ["src", "tests/InfoCard.test.jsx", "tests/Species.test.jsx", "tests/setup.ts", "tests/mocks/data", "tests/mocks/server.ts", "tests/mocks/handlers.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
 }
