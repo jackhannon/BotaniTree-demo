@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,7 +8,6 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
 import InfoCardStyles from '../styles/InfoCardStyles.module.css'
 import { WaterEntry } from '../../../types';
 import WaterLabel from './WaterLabel';
@@ -59,35 +58,64 @@ function constructChartData(waterValues: WaterEntry[]) {
 
 
 const WaterChart:React.FC<Props> = ({waterValues, handleChangeWater}) => {
-  const chartData = constructChartData(waterValues)
+
+
+  const chartRef = useRef<HTMLCanvasElement | null>(null);
+
+
+  
+  const chartData = constructChartData(waterValues);
+
+  useEffect(() => {
+    if (!chartRef.current) return;
+    
+    const ctx = chartRef.current.getContext('2d');
+    if (!ctx) return;
+    
+    const highestValue = Math.max(...chartData.datasets[0].data);
+
+    const BarOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: Math.min(Math.ceil(highestValue * 1.5), 100),
+        },
+      },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top' as const,
+        },
+      }
+    };
+
+    new ChartJS(ctx, {
+      type: 'bar',
+      data: chartData,
+      options: BarOptions,
+    });
+
+    // Cleanup function to destroy the chart when the component unmounts
+    return () => {
+      if (chartRef.current) {
+        const chart = ChartJS.getChart(chartRef.current);
+        if (chart) {
+          chart.destroy();
+        }
+      }
+    };
+  }, [waterValues]);
+
+
   const {isInfoCardNewOrEditing} = useInfoCardContext()
-
-  const highestValue = Math.max(...chartData.datasets[0].data);
-
-  const BarOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: Math.min(Math.ceil(highestValue * 1.5), 100),
-      },
-    },
-    plugins: {
-      legend: {
-        display: true,
-        position: 'top' as const,
-      },
-    }
-  };
 
   const handleLabelValueChange = (dataIndex: number, newValue: number) => {
     const waterValuesCopy = [...waterValues]
     waterValuesCopy[dataIndex] = {...waterValuesCopy[dataIndex], water_count: Number(newValue)}
     handleChangeWater(waterValuesCopy)
   }
-
-  
 
   return (
     <div className={InfoCardStyles.chart}>
@@ -106,10 +134,7 @@ const WaterChart:React.FC<Props> = ({waterValues, handleChangeWater}) => {
         </ul>
       }
       <div className={InfoCardStyles.barChart}>
-        <Bar
-          data={chartData}
-          options={BarOptions}
-        />
+        <canvas ref={chartRef} />
       </div>
     </div>
   )

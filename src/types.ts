@@ -5,10 +5,10 @@ export type Individual = {
   images: string[]
   id: number
   description_html: string
-  description_delta: DeltaStatic
+  description_delta: DeltaStatic | string
   death_date?: number
-  is_artificial_conditions: boolean
-  is_clone: boolean
+  is_artificial_conditions?: boolean
+  is_clone?: boolean
   mates: Individual[]
   children?: Individual[]
   child_count?: number
@@ -58,7 +58,7 @@ export type FlatEntry = [string, string | number | boolean];
 
 
 export type Species = {
-  description_delta: DeltaStatic;
+  description_delta: DeltaStatic | string
   description_html: string;
   substrate_values: SubstrateEntry[];
   water_values: WaterEntry[];
@@ -88,12 +88,12 @@ export type WaterEntry = {
 
 export type Group =  {
   name: string;
-  images?: string[];
+  images: string[];
   id: number;
-  description_html?: string
-  description_delta?: DeltaStatic
-  water_values?: WaterEntry[];
-  substrate_values?: SubstrateEntry[]
-  light_value?: number
-  species_id?: number
+  description_html: string
+  description_delta: DeltaStatic | string
+  water_values: WaterEntry[];
+  substrate_values: SubstrateEntry[]
+  light_value: number
+  species_id: number
 }

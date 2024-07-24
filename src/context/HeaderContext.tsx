@@ -12,10 +12,6 @@ type FilterEntry = [string, string | number | boolean | FilterEntry];
 
 type FlatEntry = [string, string | number | boolean];
 
-type initialState = {
-  filters: Filters
-  query: string
-}
 
 
 const initialState = {

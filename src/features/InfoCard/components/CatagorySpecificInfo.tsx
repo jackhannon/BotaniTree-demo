@@ -20,8 +20,8 @@ type Props = {
   setGroupId: React.Dispatch<React.SetStateAction<number | undefined>>
   setImages: React.Dispatch<React.SetStateAction<string[]>>
   handleGenerateIndividualName: () => void
-  isClone: boolean
-  isArtificialConditions: boolean
+  isClone?: boolean
+  isArtificialConditions?: boolean
   deathDate: number | undefined
   toggleIsDead: () => void
   toggleIsClone: () => void

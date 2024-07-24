@@ -6,7 +6,7 @@ import { Group } from '../../../types'
 
 type Props = {
   selectedGroup: Group
-  setGroup: React.Dispatch<React.SetStateAction<Group>>
+  setGroup: React.Dispatch<React.SetStateAction<{name: string, id: number}>>
 }
 
 const SelectedGroup: React.FC<Props> = ({selectedGroup, setGroup}) => {

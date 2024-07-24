@@ -1,7 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { beforeAll, afterEach, } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import * as matchers from '@testing-library/jest-dom/matchers';
 import { expect } from 'vitest';
+
+
+Object.keys(matchers).forEach(matcher => {
+  (expect as any)[matcher] = (matchers as any)[matcher];
+});
 
 declare global {
   interface Window {
@@ -12,10 +18,8 @@ declare global {
   }}
 
 beforeAll(() => {
-  expect.extend(matchers);
 
   class ResizeObserver {
-    // Define the callback type according to the ResizeObserver spec
     callback: ResizeObserverCallback;
     constructor(callback: ResizeObserverCallback) {
       this.callback = callback;

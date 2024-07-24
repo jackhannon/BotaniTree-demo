@@ -7,8 +7,21 @@ export const species: Species[] = [{
   ],
   "description_delta": "{}",
   "description_html": "",
-  "substrate_values": [],
+  "substrate_values": [{"percent": 50, "substrate": "pumice", "color": "#1a3b52"}, {"percent": 50, "substrate": "soil", "color": "#ab691e"}],
   "light_value": 12,
-  "water_values": [],
+  "water_values": [
+    { "month": "January", "water_count": 4 },
+    { "month": "February", "water_count": 4 },
+    { "month": "March", "water_count": 4 },
+    { "month": "April", "water_count": 4 },
+    { "month": "May", "water_count": 4 },
+    { "month": "June", "water_count": 4 },
+    { "month": "July", "water_count": 4 },
+    { "month": "August", "water_count": 4 },
+    { "month": "September", "water_count": 4 },
+    { "month": "October", "water_count": 4 },
+    { "month": "November", "water_count": 4 },
+    { "month": "December", "water_count": 4 }
+  ],
   "id": 0
 }]

@@ -381,8 +381,8 @@
   transform: initial !important
 }
 
-.chart {
-  padding: 0 1rem
+.chart canvas {
+  padding: .5rem;
 }
 
 

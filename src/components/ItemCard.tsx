@@ -16,7 +16,7 @@ type Props = {
   styles?: string;
 }
 
-const ItemCard: React.FC<Props> = ({image, id, handleClick = ()=>{}, sizeStyles, styles, imageDimensions, handleHover = ()=>{}, handleUnHover = ()=>{}, children}) => {
+const ItemCard: React.FC<Props> = ({image, id, handleClick = ()=>{}, sizeStyles, styles, handleHover = ()=>{}, handleUnHover = ()=>{}, children}) => {
   return (
     <div 
       aria-label={`item-${id}`}

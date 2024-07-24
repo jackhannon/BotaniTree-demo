@@ -14,7 +14,7 @@ import 'react-quill/dist/quill.bubble.css'
 import { DeltaStatic } from 'quill'
 import useIsValidInput from '../../../hooks/useIsValidInput'
 import CatagorySpecificInfo from './CatagorySpecificInfo'
-import { Group, Individual, SubstrateEntry, WaterEntry } from '../../../types'
+import { Individual, SubstrateEntry, WaterEntry } from '../../../types'
 import { useInfoCardContext } from '../../../context/InfoCardContext'
 import { usePlantContext } from '../../../context/PlantContext'
 import { generateName, keyGen } from '../../../utils/keyGen'
@@ -48,7 +48,7 @@ const InfoCard:React.FC = () => {
     ? getCurrentPlant(itemId) :
     undefined;
     
-  const [descriptionDelta, setDescriptionDelta] = useState<DeltaStatic | undefined>(isJsonString(cardInfo?.description_delta) ? JSON.parse(cardInfo?.description_delta) : "");
+  const [descriptionDelta, setDescriptionDelta] = useState<DeltaStatic | undefined>(isJsonString(cardInfo?.description_delta) ? JSON.parse(cardInfo?.description_delta as string) : "");
   const [descriptionHTML, setDescriptionHTML] = useState<string>(cardInfo?.description_html || "");
   const [substrateValues, setSubstrateValues] = useState<SubstrateEntry[]>(cardInfo?.substrate_values || [{percent: 50, substrate: "pumice", color: "#1a3b52"}, {percent: 50, substrate: "soil", color: "#ab691e"}]);
   const [waterValues, setWaterValues] = useState<WaterEntry[]>(cardInfo?.water_values || [
@@ -68,8 +68,8 @@ const InfoCard:React.FC = () => {
 );
   const [lightValue] = useState<number>(cardInfo?.light_value || 12);
   const [deathDate, setDeathDate] = useState<number | undefined>((cardInfo as Individual)?.death_date);
-  const [isClone, setIsClone] = useState<boolean>((cardInfo as Individual)?.is_clone);
-  const [isArtificialConditions, setIsArtificialConditions] = useState<boolean>((cardInfo as Individual)?.is_artificial_conditions);
+  const [isClone, setIsClone] = useState<boolean | undefined>((cardInfo as Individual)?.is_clone);
+  const [isArtificialConditions, setIsArtificialConditions] = useState<boolean | undefined>((cardInfo as Individual)?.is_artificial_conditions);
   const [fatherId, setFatherId] = useState<number | undefined>(typeof (cardInfo as Individual)?.father_id === "number" ? (cardInfo as Individual)?.father_id : newPlantFatherId)
   const [motherId, setMotherId] = useState<number | undefined>(typeof (cardInfo as Individual)?.mother_id === "number" ? (cardInfo as Individual)?.mother_id : newPlantMotherId)
   const [groupId, setGroupId] = useState<number | undefined>((cardInfo as Individual)?.group_id)
@@ -148,16 +148,16 @@ const InfoCard:React.FC = () => {
       } else if (catagory === "group") {
         if (typeof itemId !== "number") {
           addGroup({
-            name, 
-            images, 
-            description_delta: description_string, 
-            description_html: descriptionHTML, 
-            substrate_values: substrateValues, 
+            name,
+            images,
+            description_delta: description_string,
+            description_html: descriptionHTML,
+            substrate_values: substrateValues,
             light_value: lightValue,
             water_values: waterValues,
             species_id: species.id,
             id: keyGen("group"),
-          } as Group)
+          })
         } else {
           changeGroup({
             name,

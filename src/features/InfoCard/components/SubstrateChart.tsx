@@ -1,12 +1,10 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartOptions } from 'chart.js';
 import { SubstrateEntry } from '../../../types';
 import SubstrateLegendLabel from './SubstrateLegendLabel';
 import PieLegendStyles from "../styles/PieLegendStyles.module.css"
-import InfoCardStyles from '../styles/InfoCardStyles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ChartStyles from '../styles/ChartStyles.module.css'
 import { useInfoCardContext } from '../../../context/InfoCardContext';
 
@@ -19,14 +17,16 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.defaults.plugins.legend.display = false
 
 
-const pieOptions = {
+const pieOptions: ChartOptions<'pie'> = {
   animation: {
-    duration: 1000, // Duration of the animation in milliseconds
-    easing: 'easeInOutQuart', // Easing function to use for the animation
+    duration: 1000,
+    easing: 'easeInOutQuart',
   },
-  legend: {
-    display: false
-  }
+  plugins: {
+    legend: {
+      display: false,
+    },
+  },
 };
 
 function constructChartData(substrateValues: SubstrateEntry[]) {
@@ -60,7 +60,37 @@ function constructChartData(substrateValues: SubstrateEntry[]) {
   return structure
 }
 
+
+
+
 const SubstrateChart:React.FC<Props> = ({substrateValues, handleChangeSubstrate}) => {
+
+  const chartRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    if (!chartRef.current) return;
+    
+    const ctx = chartRef.current.getContext('2d');
+    if (!ctx) return;
+
+    const chartData = constructChartData(substrateValues);
+    
+    new ChartJS(ctx, {
+      type: 'pie',
+      data: chartData,
+      options: pieOptions,
+    });
+
+    // Cleanup function to destroy the chart when the component unmounts
+    return () => {
+      if (chartRef.current) {
+        const chart = ChartJS.getChart(chartRef.current);
+        if (chart) {
+          chart.destroy();
+        }
+      }
+    };
+  }, [substrateValues]);
 
   const {isInfoCardNewOrEditing} = useInfoCardContext()
 
@@ -142,12 +172,7 @@ const SubstrateChart:React.FC<Props> = ({substrateValues, handleChangeSubstrate}
         </>
       )}
       {isInfoCardNewOrEditing && <div>Remaining space: {remainingPercent}%</div>}
-      <div className={InfoCardStyles.chart}>
-        <Pie 
-          data={chartData}
-          options={pieOptions}
-        />
-      </div>
+      <canvas ref={chartRef} />
     </div>
   )
 }
