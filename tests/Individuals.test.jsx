@@ -5,6 +5,7 @@ import { routeTree } from '../src/routeTree.gen';
 import {HeaderProvider} from '../src/context/HeaderContext'
 import {PlantProvider} from '../src/context/PlantContext'
 import {InfoCardProvider} from '../src/context/InfoCardContext'
+import React from 'react';
 
 
 describe("individuals", () => {
