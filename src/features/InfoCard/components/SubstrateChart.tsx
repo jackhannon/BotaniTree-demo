@@ -1,11 +1,11 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartOptions } from 'chart.js';
 import { SubstrateEntry } from '../../../types';
 import SubstrateLegendLabel from './SubstrateLegendLabel';
-import PieLegendStyles from "../styles/PieLegendStyles.module.css"
+import PieLegendStyles from "../styles/PieLegendStyles.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useRef, useState } from 'react';
-import ChartStyles from '../styles/ChartStyles.module.css'
+import ChartStyles from '../styles/ChartStyles.module.css';
 import { useInfoCardContext } from '../../../context/InfoCardContext';
 
 type Props = {
@@ -17,14 +17,14 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.defaults.plugins.legend.display = false
 
 
-const pieOptions: ChartOptions<'pie'> = {
+const pieOptions: ChartOptions = {
   animation: {
     duration: 1000,
     easing: 'easeInOutQuart',
   },
   plugins: {
     legend: {
-      display: false,
+      display: false
     },
   },
 };
