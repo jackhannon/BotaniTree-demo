@@ -1,12 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import {
   Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
+  registerables
 } from 'chart.js';
 import InfoCardStyles from '../styles/InfoCardStyles.module.css'
 import { WaterEntry } from '../../../types';
@@ -14,14 +9,7 @@ import WaterLabel from './WaterLabel';
 import ChartStyles from '../styles/ChartStyles.module.css'
 import { useInfoCardContext } from '../../../context/InfoCardContext';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+ChartJS.register(...registerables);
 
 type Props = {
   waterValues: WaterEntry[], 
@@ -58,22 +46,15 @@ function constructChartData(waterValues: WaterEntry[]) {
 
 
 const WaterChart:React.FC<Props> = ({waterValues, handleChangeWater}) => {
-
-
   const chartRef = useRef<HTMLCanvasElement | null>(null);
-
-
-  
   const chartData = constructChartData(waterValues);
 
   useEffect(() => {
     if (!chartRef.current) return;
-    
     const ctx = chartRef.current.getContext('2d');
     if (!ctx) return;
     
     const highestValue = Math.max(...chartData.datasets[0].data);
-
     const BarOptions = {
       responsive: true,
       maintainAspectRatio: false,

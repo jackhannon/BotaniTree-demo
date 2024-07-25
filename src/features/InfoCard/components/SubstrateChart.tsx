@@ -1,4 +1,8 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartOptions } from 'chart.js';
+import {
+  Chart as ChartJS,
+  ChartOptions,
+  registerables
+} from 'chart.js';
 import { SubstrateEntry } from '../../../types';
 import SubstrateLegendLabel from './SubstrateLegendLabel';
 import PieLegendStyles from "../styles/PieLegendStyles.module.css";
@@ -13,11 +17,11 @@ type Props = {
   handleChangeSubstrate: (substrate_values: SubstrateEntry[]) => void
 }
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(...registerables);
 ChartJS.defaults.plugins.legend.display = false
 
 
-const pieOptions: ChartOptions = {
+const pieOptions: ChartOptions<"pie"> = {
   animation: {
     duration: 1000,
     easing: 'easeInOutQuart',
