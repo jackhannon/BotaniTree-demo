@@ -22,6 +22,8 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
   const [activeIdOfAggregates, setActiveIdOfAggregates] = useState<number | undefined>();
   const [hoveredNodeId, setHoveredNodeId] = useState<number | undefined>();
   const [isHoveringSiblingCounter, setIsHoveringSiblingCounter] = useState<boolean>(false);
+
+
   function getActiveNode() {
     return children.find(child => child.id === activeIdOfAggregates);
   }
@@ -126,7 +128,6 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
   const handleMouseLeaveSiblingCounter = () => {
     setIsHoveringSiblingCounter(false)
   }
-  console.log()
 
   return (
     <ul className={`${LineageTreeStyles.childrenContainer}`}>
@@ -169,9 +170,9 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
             `}
             style={{ willChange: 'width, opacity' }}
           >
-            <div 
+            <div
               className={`${
-                typeof activeIdOfAggregates === "number" && !getActiveNode()?.mates?.[activeMateIndex[0]]?.children?.length 
+                typeof activeIdOfAggregates === "number" && !getActiveNode()?.mates[activeMateIndex[0]]?.children?.length 
                 ? LineageTreeStyles.hasNoChildren 
                 : LineageTreeStyles.parentsContainer
               }`}
@@ -266,6 +267,7 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
                       <ButtonWithHoverLabel
                         positioningStyles={getActiveNode()?.mates?.[activeMateIndex[0]]?.children?.length || 0 > 0 ? LineageTreeStyles.addChildPosition : LineageTreeStyles.addFirstChildPosition}
                         label="Add child"
+                        ariaLabel={`add-child-of-${node.id}`}
                       >
                         <button 
                           className={LineageTreeStyles.addChild}
@@ -362,6 +364,7 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
               <ButtonWithHoverLabel
                 positioningStyles={node.mates[activeMateIndex[index]]?.children?.length ? LineageTreeStyles.addChildPosition : LineageTreeStyles.addFirstChildPosition}
                 label="Add child"
+                ariaLabel={`add-child-of-${node.id}`}
               >
                 <button 
                   className={LineageTreeStyles.addChild}

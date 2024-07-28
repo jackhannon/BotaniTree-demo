@@ -54,6 +54,7 @@
   display: flex;
   font-size: 3rem;
   color: rgb(187, 187, 187);
+  background-color: #f0f0f0;
   justify-content: center;
   align-items: center;
 }

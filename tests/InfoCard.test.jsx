@@ -1,5 +1,5 @@
 import { describe, it} from 'vitest';
-import { render } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { routeTree } from '../src/routeTree.gen';
 import {HeaderProvider} from '../src/context/HeaderContext';
@@ -10,7 +10,7 @@ import React from 'react';
 describe("info card", () => {
   const router = createRouter({ routeTree });
 
-  it("info card opens", async () => {
+  it("info card toggles when toggle is clicked", async () => {
     render(
       <HeaderProvider>
         <PlantProvider>
@@ -20,19 +20,18 @@ describe("info card", () => {
         </PlantProvider>
       </HeaderProvider>
     )
-  });
+    const toggleButton = screen.getByLabelText("toggle-info-card")
 
+    fireEvent.click(toggleButton)
 
-  
-  it("info card closes", async () => {
-    render(
-      <HeaderProvider>
-        <PlantProvider>
-          <InfoCardProvider>
-            <RouterProvider router={router} />
-          </InfoCardProvider>
-        </PlantProvider>
-      </HeaderProvider>
-    )
+    waitFor(() => {
+      expect(screen.getByLabelText("edit-item")).toBeInTheDocument()
+    })
+
+    fireEvent.click(toggleButton)
+
+    waitFor(() => {
+      expect(screen.getByLabelText("edit-item")).toBeFalsy()
+    })
   });
 });

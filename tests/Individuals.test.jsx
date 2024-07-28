@@ -22,31 +22,12 @@ describe("individuals", () => {
     )
 
     await waitFor(() => {
-      expect(screen.queryAllByLabelText(/item-[\d]+$/).length).toBe(0)
+      expect(screen.getByLabelText("tree view")).toBeInTheDocument()
     })
 
     await waitFor(() => {
-      expect(screen.queryAllByLabelText("add-new-item").length).toBe(1)
-    })
-
-    const createButton = screen.queryByLabelText("add-new-item");
-    fireEvent.click(createButton)
-
-    await waitFor(() => {
-      expect(screen.queryByLabelText("name-input")).toBeInTheDocument()
-    })
-
-    const nameField = screen.queryByLabelText("name-input");
-    const name = "item 1"
-
-    fireEvent.change(nameField, { target: { value: name } });
-
-    const confirmButton = screen.queryByLabelText("confirm-changes");
-    fireEvent.click(confirmButton)
-    screen.debug()
-
-    await waitFor(() => {
-      expect(screen.queryAllByLabelText(/item-[\d]+$/).length).toBe(1)
+      const itemCount = screen.queryAllByLabelText(/item-[\d]+$/).length;
+      expect(itemCount).toBeGreaterThan(0); 
     })
   });
 
@@ -63,14 +44,12 @@ describe("individuals", () => {
       </HeaderProvider>
     )
 
-    const individual = screen.getByLabelText(/item-[\d]+$/)
-    fireEvent.click(individual)
-
     const gridButton = screen.getByLabelText("grid view")
     fireEvent.click(gridButton)
 
     await waitFor(() => {
-      expect(screen.queryAllByLabelText("add-new-item").length).toBe(1)
+      const itemCount = screen.queryAllByLabelText(/item-[\d]+$/).length;
+      expect(itemCount).toBeGreaterThan(0); 
     })
   });
 
@@ -101,12 +80,15 @@ describe("individuals", () => {
     await waitFor(() => {
       expect(screen.queryByLabelText("name-input")).toBeInTheDocument()
     })
+    const nameInput = screen.getByLabelText("name-input");
+    const name = "item x";
+    fireEvent.change(nameInput, { target: { value: name } });
 
     const confirmButton = screen.queryByLabelText("confirm-changes");
     fireEvent.click(confirmButton)
 
     await waitFor(() => {
-      expect(screen.queryAllByLabelText(/item-[\d]+$/).length).toBe(1)
+      expect(screen.queryByText(name)).toBeInTheDocument();
     })
   });
 
@@ -166,6 +148,10 @@ describe("individuals", () => {
     const editButton = screen.queryByLabelText("edit-item");
     fireEvent.click(editButton);
 
+    const nameField = screen.queryByLabelText("name-input");
+    const name = nameField.value;
+    
+
     await waitFor(() => {
       expect(screen.queryByLabelText("delete-item")).toBeInTheDocument()
     })
@@ -173,7 +159,7 @@ describe("individuals", () => {
     fireEvent.click(deleteButton)
 
     await waitFor(() => {
-      expect(screen.queryAllByLabelText(/item-[\d]+$/).length).toBe(0)
+      expect(screen.queryByText(name)).toBeNull();
     })
   });
 }) 

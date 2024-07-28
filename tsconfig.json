@@ -20,7 +20,7 @@
     "src",
     "tests/InfoCard.test.jsx",
     "tests/Species.test.jsx",
-    "tests/setup.ts",
+    "tests/vitest.setup.ts",
     "tests/mocks/data",
     "tests/mocks/server.ts",
     "tests/mocks/handlers.ts"

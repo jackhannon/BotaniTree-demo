@@ -6,15 +6,17 @@ type Props = {
   positioningStyles?: string, 
   labelHoveringPositionStyles?: string,
   id?: string,
+  ariaLabel?: string,
 }
 
-const ButtonWithHoverLabel: React.FC<Props> = ({positioningStyles, labelHoveringPositionStyles, children, label}) => {
+const ButtonWithHoverLabel: React.FC<Props> = ({ariaLabel, positioningStyles, labelHoveringPositionStyles, children, label}) => {
   const [isHovering, setIsHovering] = useState(false);
   return (
     <div
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}   
       className={positioningStyles || "defaultPositioning"}
+      aria-label={ariaLabel}
     >
       {children}
       {isHovering &&

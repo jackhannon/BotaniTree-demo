@@ -12,9 +12,8 @@ import { useInfoCardContext } from '../../../context/InfoCardContext'
 const TreeView: React.FC = () => {
   const {getNestedPlants} = usePlantContext()
   const {toggleInfoCardOn} = useInfoCardContext()
-
   const root = getNestedPlants()
-  
+
   const displayInfoCard = (id: number) => {
     toggleInfoCardOn({itemId: id, catagory: "plant"})
   }

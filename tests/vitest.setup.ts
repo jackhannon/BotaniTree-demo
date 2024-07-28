@@ -5,10 +5,6 @@ import * as matchers from '@testing-library/jest-dom/matchers';
 import { expect } from 'vitest';
 
 
-Object.keys(matchers).forEach(matcher => {
-  (expect as any)[matcher] = (matchers as any)[matcher];
-});
-
 declare global {
   interface Window {
     ResizeObserver: typeof ResizeObserver;
@@ -18,7 +14,7 @@ declare global {
   }}
 
 beforeAll(() => {
-
+  expect.extend(matchers)
   class ResizeObserver {
     callback: ResizeObserverCallback;
     constructor(callback: ResizeObserverCallback) {
