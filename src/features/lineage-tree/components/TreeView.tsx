@@ -13,6 +13,7 @@ const TreeView: React.FC = () => {
   const {getNestedPlants} = usePlantContext()
   const {toggleInfoCardOn} = useInfoCardContext()
   const root = getNestedPlants()
+  console.log(root)
 
   const displayInfoCard = (id: number) => {
     toggleInfoCardOn({itemId: id, catagory: "plant"})
