@@ -103,6 +103,7 @@ const AggregateGeneration: React.FC<Props> = ({
     return children.findIndex(child => child.id === id)
   }
 
+
   return (
     <motion.li 
       key={`aggregate-${children[0].id}`}
@@ -259,10 +260,10 @@ const AggregateGeneration: React.FC<Props> = ({
         )}    
       </div>
       <AnimatePresence>
-        {((getHoveredNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]]?.children?.length || 0) > 0) ||
-          ((getActiveNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]]?.children?.length || 0) > 0) && (
-            <LineageGeneration 
-              key={`child-${children[0].id}`}
+        {(((getHoveredNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]]?.children?.length || 0) > 0) ||
+        ((getActiveNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]]?.children?.length || 0) > 0)) && (
+            <LineageGeneration             
+              key={(children.length || 0) + (children[0].id || 0)}
               children={
                 getHoveredNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]]?.children?.length ? 
                 getHoveredNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]].children as Individual[] : 

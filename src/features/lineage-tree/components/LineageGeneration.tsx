@@ -16,11 +16,9 @@ type Props = {
 const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayNewInfoCard, isParentBeingHovered=false}) => {
   const [activeMateIndex, setActiveMateIndex] = useState<number[]>(Array(children.length).fill(0));
   const [hoveredNodeId, setHoveredNodeId] = useState<number | undefined>();
-
-
   const prevActiveIndex = useRef<number[]>([0,0])
 
-
+  
   const debouncedSetHoveredNodeId = debounce(setHoveredNodeId, 300);
 
   const handleHover = (id: number) => {
@@ -52,14 +50,13 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
     });
   }
 
-  console.log(children)
 
   return (
     <ul className={`${LineageTreeStyles.childrenContainer}`}>
       {children.length > 2 
         ? 
           <AggregateGeneration 
-            key={children.length + children[0].id}
+            key={(children.length || 0) + (children[0].id || 0)}
             children={children} 
             isParentBeingHovered={isParentBeingHovered} 
             displayInfoCard={displayInfoCard}
@@ -74,7 +71,7 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
           />
         : 
           <TwoNodeGeneration
-            key={children.length + children[0].id}
+            key={(children.length || 0) + (children[0].id || 0)}
             children={children} 
             isParentBeingHovered={isParentBeingHovered} 
             displayInfoCard={displayInfoCard}

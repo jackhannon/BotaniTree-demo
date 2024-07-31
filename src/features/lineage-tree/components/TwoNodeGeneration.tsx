@@ -79,7 +79,7 @@ const TwoNodeGeneration: React.FC<Props> = ({
           `}
           >
             {/* need to maintain width */}
-            {(node.mates[activeMateIndex[index]]?.children?.length || 0 > 0) &&
+            {((node.mates[activeMateIndex[index]]?.children?.length || 0) > 0) &&
               <span className={`${LineageTreeStyles.pseudoContainer}`}>
               </span>
             }
@@ -139,11 +139,12 @@ const TwoNodeGeneration: React.FC<Props> = ({
           <AnimatePresence>
             {node.mates[activeMateIndex[index]]?.children?.length 
             ? <LineageGeneration
-                  children={node.mates[activeMateIndex[index]].children as Individual[]} 
-                  isParentBeingHovered={isParentBeingHovered || hoveredNodeId === node.id}
-                  displayInfoCard={displayInfoCard}
-                  displayNewInfoCard={displayNewInfoCard}
-                /> 
+                key={(node.mates[activeMateIndex[index]].children?.length || 0) + (children[0].id || 0)}
+                children={node.mates[activeMateIndex[index]].children as Individual[]} 
+                isParentBeingHovered={isParentBeingHovered || hoveredNodeId === node.id}
+                displayInfoCard={displayInfoCard}
+                displayNewInfoCard={displayNewInfoCard}
+              /> 
             : null}
           </AnimatePresence>
         </motion.li>
