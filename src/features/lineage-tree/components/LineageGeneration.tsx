@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import LineageTreeStyles from '../styles/LineageTreeStyle.module.css'
 import { Individual } from "../../../types";
 import { debounce } from 'lodash';
