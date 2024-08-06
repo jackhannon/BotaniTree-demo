@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import {AnimatePresence, motion} from 'framer-motion'
 import { Individual } from '../../../types';
 import ItemCardInfo from '../../../components/ItemCardInfo';
@@ -21,6 +21,7 @@ type Props = {
   handleUnHover: () => void
   getNextParent: (nodePosition?: number) => void
   getPrevParent: (nodePosition?: number) => void
+  isPreview?: boolean
 }
 const TwoNodeGeneration: React.FC<Props> = ({
   children, 
@@ -32,10 +33,12 @@ const TwoNodeGeneration: React.FC<Props> = ({
   handleHover,
   handleUnHover,
   getNextParent,
-  getPrevParent
+  getPrevParent,
+  isPreview
 }) => {
-  const childrenRef = useRef<HTMLLIElement>(null)
 
+
+  const childrenRef = useRef<HTMLLIElement>(null)
   return (
     <>
       {children.map((node, index) => (
@@ -74,15 +77,17 @@ const TwoNodeGeneration: React.FC<Props> = ({
           ref={childrenRef}
         >
           <div className={`
-            ${!node.mates[activeMateIndex[index]]?.children?.length ? LineageTreeStyles.hasNoChildren : LineageTreeStyles.parentsContainer}
+            ${(!node.mates[activeMateIndex[index]]?.children?.length || isPreview) ? LineageTreeStyles.hasNoChildren : LineageTreeStyles.parentsContainer}
             ${isParentBeingHovered || hoveredNodeId === node.id ? LineageTreeStyles.parentFocused : ""}
           `}
           >
+          
             {/* need to maintain width */}
-            {((node.mates[activeMateIndex[index]]?.children?.length || 0) > 0) &&
+            {(((node.mates[activeMateIndex[index]]?.children?.length || 0) > 0) && !isPreview) &&
               <span className={`${LineageTreeStyles.pseudoContainer}`}>
               </span>
             }
+
             <ItemCard
               key={`child-${node.id}-${index}`}
               image={node.images[0]} 
@@ -95,57 +100,63 @@ const TwoNodeGeneration: React.FC<Props> = ({
             >
               <ItemCardInfo id={node.id} onClick={displayInfoCard} name={node.name}/>
             </ItemCard>
-
-            <ButtonWithHoverLabel
-              positioningStyles={node.mates[activeMateIndex[index]]?.children?.length ? LineageTreeStyles.addChildPosition : LineageTreeStyles.addFirstChildPosition}
-              label="Add child"
-              ariaLabel={`add-child-of-${node.id}`}
-            >
-              <button 
-                className={LineageTreeStyles.addChild}
-                onClick={() => displayNewInfoCard(
-                  node.id,
-                  node.mates[activeMateIndex[index]]?.id
-                )}
+            
+            {!isPreview && (
+              <>
+                <ButtonWithHoverLabel
+                  positioningStyles={node.mates[activeMateIndex[index]]?.children?.length ? LineageTreeStyles.addChildPosition : LineageTreeStyles.addFirstChildPosition}
+                  label="Add child"
+                  ariaLabel={`add-child-of-${node.id}`}
                 >
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-            </ButtonWithHoverLabel>
-            {(node.mates[activeMateIndex[index]]?.children?.length || 0 > 0) &&
-              <span className={`${LineageTreeStyles.fatherContainer} ${`fadeInElement`}`}>
-                {node.mates.length > 1 && (
-                  <div className={LineageTreeStyles.paginateMatesContainer}>
-                    <ButtonWithHoverLabel label="Next Mate">
-                      <button onClick={() => getNextParent(index)}><FontAwesomeIcon icon={faChevronUp} /></button>
-                    </ButtonWithHoverLabel>
-                    <ButtonWithHoverLabel label="Previous Mate">
-                      <button onClick={() => getPrevParent(index)}><FontAwesomeIcon icon={faChevronDown} /></button>
-                    </ButtonWithHoverLabel>
-                  </div>
-                )}
+                  <button 
+                    className={LineageTreeStyles.addChild}
+                    onClick={() => displayNewInfoCard(
+                      node.id,
+                      node.mates[activeMateIndex[index]]?.id
+                    )}
+                    >
+                    <FontAwesomeIcon icon={faPlus} />
+                  </button>
+                </ButtonWithHoverLabel>
+                
+                {(node.mates[activeMateIndex[index]]?.children?.length || 0 > 0) &&
+                  <span className={`${LineageTreeStyles.fatherContainer} ${`fadeInElement`}`}>
+                    {node.mates.length > 1 && (
+                      <div className={LineageTreeStyles.paginateMatesContainer}>
+                        <ButtonWithHoverLabel label="Next Mate">
+                          <button onClick={() => getNextParent(index)}><FontAwesomeIcon icon={faChevronUp} /></button>
+                        </ButtonWithHoverLabel>
+                        <ButtonWithHoverLabel label="Previous Mate">
+                          <button onClick={() => getPrevParent(index)}><FontAwesomeIcon icon={faChevronDown} /></button>
+                        </ButtonWithHoverLabel>
+                      </div>
+                    )}
 
-                <ItemCard 
-                  image={node?.mates[activeMateIndex[index]]?.images?.[0]} 
-                  id={node.mates[activeMateIndex[index]]?.id}
-                  sizeStyles={CardStyles.smallCardSize} 
-                  imageDimensions={{width: 176}} 
-                  styles={`${LineageTreeStyles.nodeContent} ${isParentBeingHovered ? LineageTreeStyles.parentFocused : ""}`}
-                >
-                  <ItemCardInfo id={node.mates[activeMateIndex[index]]?.id} onClick={displayInfoCard} name={node.mates[activeMateIndex[index]]?.name || "???"}/>
-                </ItemCard>
-              </span>
-            }
+                    <ItemCard 
+                      image={node?.mates[activeMateIndex[index]]?.images?.[0]} 
+                      id={node.mates[activeMateIndex[index]]?.id}
+                      sizeStyles={CardStyles.smallCardSize} 
+                      imageDimensions={{width: 176}} 
+                      styles={`${LineageTreeStyles.nodeContent} ${isParentBeingHovered ? LineageTreeStyles.parentFocused : ""}`}
+                    >
+                      <ItemCardInfo id={node.mates[activeMateIndex[index]]?.id} onClick={displayInfoCard} name={node.mates[activeMateIndex[index]]?.name || "???"}/>
+                    </ItemCard>
+                  </span>
+                }
+              </>
+            )}
+
           </div>
           <AnimatePresence>
-            {node.mates[activeMateIndex[index]]?.children?.length 
-            ? <LineageGeneration
-                key={(node.mates[activeMateIndex[index]].children?.length || 0) + (children[0].id || 0)}
+            {(node.mates[activeMateIndex[index]]?.children?.length && !isPreview) && 
+              <LineageGeneration
+                key={(node.mates[activeMateIndex[index]].children?.length || 0) + (node.id || 0)}
                 children={node.mates[activeMateIndex[index]].children as Individual[]} 
                 isParentBeingHovered={isParentBeingHovered || hoveredNodeId === node.id}
                 displayInfoCard={displayInfoCard}
                 displayNewInfoCard={displayNewInfoCard}
               /> 
-            : null}
+            }
           </AnimatePresence>
         </motion.li>
       ))}

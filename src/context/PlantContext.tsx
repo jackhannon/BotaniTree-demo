@@ -98,6 +98,11 @@ export const PlantProvider: React.FC<ProviderProps> = ({children}) => {
         mate.children = [...children];
         mate.child_count = children.length;
         mate.children?.forEach(child => recusivelyBuildTree(child))
+        mate.child_count = mate.children.reduce((acc, child) => acc += (child.child_count ? child.child_count + 1 : 1), 0);
+        
+        typeof child.child_count === "number" 
+        ? child.child_count += mate.child_count
+        : child.child_count = mate.child_count
         child.mates.push(mate)
       }
     }

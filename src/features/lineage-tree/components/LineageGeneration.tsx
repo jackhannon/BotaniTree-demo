@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LineageTreeStyles from '../styles/LineageTreeStyle.module.css'
 import { Individual } from "../../../types";
 import { debounce } from 'lodash';
@@ -11,13 +11,13 @@ type Props = {
   isParentBeingHovered?: boolean;
   displayInfoCard: (id: number) => void
   displayNewInfoCard: (mother_id: number, father_id: number) => void
+  isPreview?: boolean,
+  previewChildCount?: number;
 }
 
-const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayNewInfoCard, isParentBeingHovered=false}) => {
+const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayNewInfoCard, isParentBeingHovered=false, isPreview, previewChildCount}) => {
   const [activeMateIndex, setActiveMateIndex] = useState<number[]>(Array(children.length).fill(0));
   const [hoveredNodeId, setHoveredNodeId] = useState<number | undefined>();
-  const prevActiveIndex = useRef<number[]>([0,0])
-
   
   const debouncedSetHoveredNodeId = debounce(setHoveredNodeId, 300);
 
@@ -33,7 +33,6 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
   const getNextParent = (nodePosition: number = 0) => {
     setActiveMateIndex(prevState => {
       const state = [...prevState];
-      prevActiveIndex.current = [...state]
       const numberOfMates = children[nodePosition].mates.length
       state[nodePosition] = (prevState[nodePosition] + 1) % numberOfMates;
       return state;
@@ -43,15 +42,14 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
   const getPrevParent = (nodePosition: number = 0) => {
     setActiveMateIndex(prevState => {
       const state = [...prevState];
-      prevActiveIndex.current = [...state]
       const numberOfMates = children[nodePosition].mates.length
       state[nodePosition] = Math.abs(prevState[nodePosition] - 1) % numberOfMates;
       return state;
     });
   }
 
-
   return (
+    <>
     <ul className={`${LineageTreeStyles.childrenContainer}`}>
       {children.length > 2 
         ? 
@@ -72,6 +70,7 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
         : 
           <TwoNodeGeneration
             key={(children.length || 0) + (children[0].id || 0)}
+            isPreview={isPreview}
             children={children} 
             isParentBeingHovered={isParentBeingHovered} 
             displayInfoCard={displayInfoCard}
@@ -85,6 +84,8 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
           />
       }
     </ul> 
+      {(isPreview && previewChildCount) && <span className={LineageTreeStyles.previewNote}>...click to view <b>{previewChildCount}</b> more children</span>}
+    </>
   )
 }
 

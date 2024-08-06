@@ -33,7 +33,8 @@ const AggregateGeneration: React.FC<Props> = ({
     handleHover,
     handleUnHover,
     getNextParent,
-    getPrevParent
+    getPrevParent,
+    
   }) => {
   const childrenRef = useRef<HTMLLIElement>(null)
   const [activeIdOfAggregates, setActiveIdOfAggregates] = useState<number | undefined>();
@@ -263,7 +264,15 @@ const AggregateGeneration: React.FC<Props> = ({
         {(((getHoveredNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]]?.children?.length || 0) > 0) ||
         ((getActiveNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]]?.children?.length || 0) > 0)) && (
             <LineageGeneration             
-              key={(children.length || 0) + (children[0].id || 0)}
+              key={((getActiveNode()?.id || 0) + (getActiveNode()?.child_count || 0)) || ((getActiveNode()?.id || 0) + (getActiveNode()?.child_count || 0))}
+              isPreview={
+                Boolean(getHoveredNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]]?.children?.length) &&
+                !Boolean(getActiveNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]]?.children?.length)
+              }
+              previewChildCount={
+                getActiveNode()?.mates.reduce((acc, mate) => acc += (mate?.children?.length || 0), 0) ||
+                getHoveredNode()?.mates.reduce((acc, mate) => acc += (mate?.children?.length || 0), 0)
+              }
               children={
                 getHoveredNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]]?.children?.length ? 
                 getHoveredNode()?.mates[activeMateIndex[getActiveOrHoveredNodeIndex()]].children as Individual[] : 
@@ -272,6 +281,7 @@ const AggregateGeneration: React.FC<Props> = ({
               isParentBeingHovered={isParentBeingHovered || typeof hoveredNodeId === "number"}
               displayInfoCard={displayInfoCard}
               displayNewInfoCard={displayNewInfoCard}
+
             />
         )}
       </AnimatePresence>

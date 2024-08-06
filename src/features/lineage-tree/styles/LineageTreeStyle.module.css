@@ -61,8 +61,6 @@
   align-items: center;
 }
 
-
-
 .treeContainer ul {
   gap: 1.2rem;
   text-decoration: none;
@@ -75,15 +73,14 @@
 }
 
 
-.treeContainer > ul {
+/* .treeContainer > ul {
   text-decoration: none;
-  /* transition: width linear .3s; */
 	list-style-type: none;
   padding-top: 0px;
   position: relative;
   display: flex;
   justify-content: center;
-}
+} */
 
 .treeContainer ul li {
   text-decoration: none;
@@ -401,3 +398,7 @@ ul li:first-child::before, .treeContainer ul li:last-child::after{
 
 
 
+.previewNote {
+  position: absolute;
+  bottom: 2rem;
+}
