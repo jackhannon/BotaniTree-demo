@@ -19,7 +19,7 @@ const DragAndDrop:React.FC<Props> = ({images, setImages}) => {
     return new Promise((resolve: (value: string) => void, reject) => {
       reader.onload = () => {
         const result = reader.result as string;
-        if (typeof result === 'string') {
+        if (result) {
           resolve(result);
         } else {
           reject(new Error('Failed to read file as ArrayBuffer or string.'));
@@ -28,7 +28,7 @@ const DragAndDrop:React.FC<Props> = ({images, setImages}) => {
   
       reader.onerror = (error) => reject(error);
   
-      reader.readAsArrayBuffer(file);
+      reader.readAsDataURL(file);
     });
   };
 
