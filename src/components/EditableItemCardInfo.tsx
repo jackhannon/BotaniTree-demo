@@ -7,7 +7,7 @@ import useSearchAndSelect from "../features/SearchAndSelect/useSearchAndSelect";
 import { usePlantContext } from "../context/PlantContext";
 type Props = {
   name: string,
-  handleChangeNode: (id: number) => void,
+  handleChangeNode: (id?: number) => void,
 }
 
 
