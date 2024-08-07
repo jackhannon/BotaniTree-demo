@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { LeanLineageNode } from '../../types';
 
 const useSearchAndSelect = (initialValue: string, selectCallback: (id?: number) => void) => {
   const [isSearching, setIsSearching] = useState<boolean>(false);
