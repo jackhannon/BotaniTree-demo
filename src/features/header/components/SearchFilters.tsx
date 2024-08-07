@@ -9,20 +9,18 @@ import { usePlantContext } from '../../../context/PlantContext';
 const SearchFilters = () => {
   
   const {filters, changeFilters} = useHeaderContext()
-
   const {getCurrentPlant, getQueriedPlants} = usePlantContext()
 
   const handleFilterChange = (fieldOfFilters: FilterObjectEntry<Filters>) => {
     changeFilters(fieldOfFilters)
   };
 
-
-  const changeMother = (id: number) => {
+  const changeMother = (id?: number) => {
     const plant = getCurrentPlant(id)
     handleFilterChange({mother: {mother_id: id, motherName: plant?.name}})
   }
 
-  const changeFather = (id: number) => {
+  const changeFather = (id?: number) => {
     const plant = getCurrentPlant(id)
     handleFilterChange({father: {father_id: id, fatherName: plant?.name}})
   }
@@ -45,7 +43,6 @@ const SearchFilters = () => {
 
   const motherQueryResults = getQueriedPlants(motherQuery)
   const fatherQueryResults = getQueriedPlants(fatherQuery)
-  // const [motherQueryResults, setMotherQueryResults] = useState(getQueriedPlants(motherQuery))
 
   return (
     <div className={SearchBarStyles.filters}>

@@ -8,7 +8,7 @@ type Props = {
   data: {id: number, name: string}[],
   handleChangeQuery: (value: string) => void,
   query: string,
-  handleChangeSelected: (item: {id: number, name: string}) => void,
+  handleChangeSelected: (item: {id?: number, name: string}) => void,
   toggleDropDown: () => void,
   dropDownState: boolean
   placeholder?: string
@@ -57,15 +57,24 @@ const SearchAndSelect:React.FC<Props> = ({data, handleChangeQuery, query, handle
     {dropDownState &&
       <ul className={SearchAndSelectStyles.resultContainer}>
         {data?.length && query ? (
-          data.map((element, index)=>
+          <>
             <li 
-              className={hoveredResultIndex === index ? SearchAndSelectStyles.activeResult : ""} 
-              data-id={element.id} 
-              onClick={() => handleChangeSelected({id: element.id, name: element.name})}
+              className={hoveredResultIndex === -1 ? SearchAndSelectStyles.activeResult : ""} 
+              data-id={-1} 
+              onClick={() => handleChangeSelected({id: undefined, name: ""})}
             >
-              {element.name}
+              {"No parent"}
             </li>
-          )
+            {data.map((element, index)=>
+              <li 
+                className={hoveredResultIndex === index ? SearchAndSelectStyles.activeResult : ""} 
+                data-id={element.id} 
+                onClick={() => handleChangeSelected({id: element.id, name: element.name})}
+              >
+                {element.name}
+              </li>
+            )}
+          </>
         ) : (
           <li>No Results!</li>
         )}

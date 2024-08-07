@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { LeanLineageNode } from '../../types';
 
-const useSearchAndSelect = (initialValue: string, selectCallback: (id: number) => void) => {
+const useSearchAndSelect = (initialValue: string, selectCallback: (id?: number) => void) => {
   const [isSearching, setIsSearching] = useState<boolean>(false);
   const [dropDown, setDropDown] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(initialValue);
@@ -23,8 +23,8 @@ const useSearchAndSelect = (initialValue: string, selectCallback: (id: number) =
     }
   }
 
-  const handleSelectItem = (item: LeanLineageNode) => {
-    selectCallback(item.id)
+  const handleSelectItem = (item: {id?: number, name: string}) => {
+    selectCallback(item?.id)
     setQuery(item.name)
     setDropDown(false)
   }

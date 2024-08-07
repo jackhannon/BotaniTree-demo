@@ -87,14 +87,14 @@ export const PlantProvider: React.FC<ProviderProps> = ({children}) => {
 
       plants.forEach(plant => {
         if (plant.mother_id === child.id) {
-          const childrenOfFather = childrenMap.get(plant.father_id) || []
-          childrenMap.set(plant.father_id, [...childrenOfFather, {...plant, mates: []}])
+          const childrenOfFather = childrenMap.get(plant.father_id) || [];
+          childrenMap.set(plant.father_id, [...childrenOfFather, {...plant, mates: []}]);
         }
       })
    
       for (const [mateId, children] of childrenMap) {
         let mate = getCurrentPlant(mateId) as Individual || {}
-        mate = {...mate}
+        mate = {...mate};
         mate.children = [...children];
         mate.child_count = children.length;
         mate.children?.forEach(child => recusivelyBuildTree(child))
@@ -145,13 +145,12 @@ export const PlantProvider: React.FC<ProviderProps> = ({children}) => {
     return plants.filter(plant => {
       return validEntries.every(filter => {
         let booleanValue: boolean | string = filter[1]
-          if (filter[1] === "true") {
-            booleanValue = true
-          }
-          if (filter[1] === "false") {
-            booleanValue = false
-          }
-
+        if (filter[1] === "true") {
+          booleanValue = true
+        }
+        if (filter[1] === "false") {
+          booleanValue = false
+        }
         if (filter[0] === "isClone") {
           return plant.is_clone === booleanValue
         }
@@ -161,10 +160,10 @@ export const PlantProvider: React.FC<ProviderProps> = ({children}) => {
         if (filter[0] === "hasArtificialConditions") {
           return plant.is_artificial_conditions === booleanValue
         }
-        if (filter[0] === "motherId") {
+        if (filter[0] === "mother_id") {
           return plant.mother_id === Number(filter[1])
         }
-        if (filter[0] === "fatherId") {
+        if (filter[0] === "father_id") {
           return plant.father_id === Number(filter[1])
         }
         if (filter[0] === "minWater") {
@@ -196,6 +195,7 @@ export const PlantProvider: React.FC<ProviderProps> = ({children}) => {
           const regex = new RegExp(escapedQuery, 'i');
           return regex.test(plant.name)
         }
+        return true
       })
     })
   }
