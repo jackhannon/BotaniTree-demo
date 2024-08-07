@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import {AnimatePresence, motion} from 'framer-motion'
 import { Individual } from '../../../types';
 import ItemCardInfo from '../../../components/ItemCardInfo';
@@ -15,12 +15,9 @@ type Props = {
   isParentBeingHovered: boolean;
   displayInfoCard: (id: number) => void
   displayNewInfoCard: (mother_id: number, father_id: number) => void
-  activeMateIndex: number[]
   hoveredNodeId: number | undefined
   handleHover: (id: number) => void
   handleUnHover: () => void
-  getNextParent: (nodePosition?: number) => void
-  getPrevParent: (nodePosition?: number) => void
   isPreview?: boolean
 }
 const TwoNodeGeneration: React.FC<Props> = ({
@@ -28,15 +25,31 @@ const TwoNodeGeneration: React.FC<Props> = ({
   isParentBeingHovered=false, 
   displayInfoCard, 
   displayNewInfoCard, 
-  activeMateIndex,
   hoveredNodeId,
   handleHover,
   handleUnHover,
-  getNextParent,
-  getPrevParent,
   isPreview
 }) => {
 
+  const [activeMateIndex, setActiveMateIndex] = useState<number[]>([0, 0]);
+
+  const getNextParent = (nodePosition: number = 0) => {
+    setActiveMateIndex(prevState => {
+      const state = [...prevState];
+      const numberOfMates = children[nodePosition].mates.length
+      state[nodePosition] = (prevState[nodePosition] + 1) % numberOfMates;
+      return state;
+    });
+  }
+
+  const getPrevParent = (nodePosition: number = 0) => {
+    setActiveMateIndex(prevState => {
+      const state = [...prevState];
+      const numberOfMates = children[nodePosition].mates.length
+      state[nodePosition] = Math.abs(prevState[nodePosition] - 1) % numberOfMates;
+      return state;
+    });
+  }
 
   const childrenRef = useRef<HTMLLIElement>(null)
   return (
@@ -77,7 +90,13 @@ const TwoNodeGeneration: React.FC<Props> = ({
           ref={childrenRef}
         >
           <div className={`
-            ${(!node.mates[activeMateIndex[index]]?.children?.length || isPreview) ? LineageTreeStyles.hasNoChildren : LineageTreeStyles.parentsContainer}
+            ${
+              isPreview
+              ? LineageTreeStyles.previewNode
+              : (!node.mates[activeMateIndex[index]]?.children?.length) 
+              ? LineageTreeStyles.hasNoChildren 
+              : LineageTreeStyles.parentsContainer
+            }
             ${isParentBeingHovered || hoveredNodeId === node.id ? LineageTreeStyles.parentFocused : ""}
           `}
           >
@@ -150,7 +169,6 @@ const TwoNodeGeneration: React.FC<Props> = ({
           <AnimatePresence>
             {(node.mates[activeMateIndex[index]]?.children?.length && !isPreview) && 
               <LineageGeneration
-                key={(node.mates[activeMateIndex[index]].children?.length || 0) + (node.id || 0)}
                 children={node.mates[activeMateIndex[index]].children as Individual[]} 
                 isParentBeingHovered={isParentBeingHovered || hoveredNodeId === node.id}
                 displayInfoCard={displayInfoCard}

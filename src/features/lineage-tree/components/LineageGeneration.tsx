@@ -16,7 +16,6 @@ type Props = {
 }
 
 const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayNewInfoCard, isParentBeingHovered=false, isPreview, previewChildCount}) => {
-  const [activeMateIndex, setActiveMateIndex] = useState<number[]>(Array(children.length).fill(0));
   const [hoveredNodeId, setHoveredNodeId] = useState<number | undefined>();
   
   const debouncedSetHoveredNodeId = debounce(setHoveredNodeId, 300);
@@ -30,46 +29,24 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
     setHoveredNodeId(undefined)
   };
 
-  const getNextParent = (nodePosition: number = 0) => {
-    setActiveMateIndex(prevState => {
-      const state = [...prevState];
-      const numberOfMates = children[nodePosition].mates.length
-      state[nodePosition] = (prevState[nodePosition] + 1) % numberOfMates;
-      return state;
-    });
-  }
-
-  const getPrevParent = (nodePosition: number = 0) => {
-    setActiveMateIndex(prevState => {
-      const state = [...prevState];
-      const numberOfMates = children[nodePosition].mates.length
-      state[nodePosition] = Math.abs(prevState[nodePosition] - 1) % numberOfMates;
-      return state;
-    });
-  }
+  
 
   return (
     <>
     <ul className={`${LineageTreeStyles.childrenContainer}`}>
       {children.length > 2 
         ? 
-          <AggregateGeneration 
-            key={(children.length || 0) + (children[0].id || 0)}
+          <AggregateGeneration
             children={children} 
             isParentBeingHovered={isParentBeingHovered} 
             displayInfoCard={displayInfoCard}
             displayNewInfoCard={displayNewInfoCard}
             handleHover={handleHover}
             handleUnHover={handleUnHover}
-            activeMateIndex={activeMateIndex}
             hoveredNodeId={hoveredNodeId}
-            getNextParent={getNextParent}
-            getPrevParent={getPrevParent}
-
           />
         : 
           <TwoNodeGeneration
-            key={(children.length || 0) + (children[0].id || 0)}
             isPreview={isPreview}
             children={children} 
             isParentBeingHovered={isParentBeingHovered} 
@@ -77,10 +54,7 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
             displayNewInfoCard={displayNewInfoCard}
             handleHover={handleHover}
             handleUnHover={handleUnHover}
-            activeMateIndex={activeMateIndex}
             hoveredNodeId={hoveredNodeId}
-            getNextParent={getNextParent}
-            getPrevParent={getPrevParent}
           />
       }
     </ul> 

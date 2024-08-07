@@ -322,6 +322,9 @@ ul li:first-child::before, .treeContainer ul li:last-child::after{
 
 
 
+
+
+
 /* .aggregateParentsContainer {
   width: 573px;
   min-height: 11rem;
@@ -396,9 +399,6 @@ ul li:first-child::before, .treeContainer ul li:last-child::after{
 }
 
 
-
-
-.previewNote {
-  position: absolute;
-  bottom: 2rem;
+.child .previewNode {
+  height: 10rem;
 }
