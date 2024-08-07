@@ -15,8 +15,9 @@ type Props = {
     name: string,
     image: string
   }
-  handleChangeMotherId: (motherId: number) => void
-  handleChangeFatherId: (fatherId: number) => void
+  
+  handleChangeMotherId: (motherId?: number) => void
+  handleChangeFatherId: (fatherId?: number) => void
 
 }
 

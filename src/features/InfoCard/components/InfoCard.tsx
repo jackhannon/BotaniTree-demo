@@ -89,11 +89,11 @@ const InfoCard:React.FC = () => {
     setWaterValues(water_values)
   }, [])
   
-  const handleChangeFatherId = useCallback((fatherId: number) => {
+  const handleChangeFatherId = useCallback((fatherId?: number) => {
     setFatherId(fatherId)
   }, [])
 
-  const handleChangeMotherId = useCallback((motherId: number) => {
+  const handleChangeMotherId = useCallback((motherId?: number) => {
     setMotherId(motherId)
   }, [])
 
