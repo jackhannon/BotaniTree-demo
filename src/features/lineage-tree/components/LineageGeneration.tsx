@@ -33,31 +33,31 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
 
   return (
     <>
-    <ul className={`${LineageTreeStyles.childrenContainer}`}>
-      {children.length > 2 
-        ? 
-          <AggregateGeneration
-            children={children} 
-            isParentBeingHovered={isParentBeingHovered} 
-            displayInfoCard={displayInfoCard}
-            displayNewInfoCard={displayNewInfoCard}
-            handleHover={handleHover}
-            handleUnHover={handleUnHover}
-            hoveredNodeId={hoveredNodeId}
-          />
-        : 
-          <TwoNodeGeneration
-            isPreview={isPreview}
-            children={children} 
-            isParentBeingHovered={isParentBeingHovered} 
-            displayInfoCard={displayInfoCard}
-            displayNewInfoCard={displayNewInfoCard}
-            handleHover={handleHover}
-            handleUnHover={handleUnHover}
-            hoveredNodeId={hoveredNodeId}
-          />
-      }
-    </ul> 
+      <ul className={`${LineageTreeStyles.childrenContainer}`}>
+        {children.length > 2 
+          ? 
+            <AggregateGeneration
+              children={children} 
+              isParentBeingHovered={isParentBeingHovered} 
+              displayInfoCard={displayInfoCard}
+              displayNewInfoCard={displayNewInfoCard}
+              handleHover={handleHover}
+              handleUnHover={handleUnHover}
+              hoveredNodeId={hoveredNodeId}
+            />
+          : 
+            <TwoNodeGeneration
+              isPreview={isPreview}
+              children={children} 
+              isParentBeingHovered={isParentBeingHovered} 
+              displayInfoCard={displayInfoCard}
+              displayNewInfoCard={displayNewInfoCard}
+              handleHover={handleHover}
+              handleUnHover={handleUnHover}
+              hoveredNodeId={hoveredNodeId}
+            />
+        }
+      </ul> 
       {(isPreview && previewChildCount) && <span className={LineageTreeStyles.previewNote}>...click to view <b>{previewChildCount}</b> more children</span>}
     </>
   )

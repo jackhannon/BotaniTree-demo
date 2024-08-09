@@ -164,11 +164,11 @@ const TwoNodeGeneration: React.FC<Props> = ({
                 }
               </>
             )}
-
           </div>
           <AnimatePresence>
             {(node.mates[activeMateIndex[index]]?.children?.length && !isPreview) && 
               <LineageGeneration
+                key={`${children[0].id}-${activeMateIndex}`}
                 children={node.mates[activeMateIndex[index]].children as Individual[]} 
                 isParentBeingHovered={isParentBeingHovered || hoveredNodeId === node.id}
                 displayInfoCard={displayInfoCard}

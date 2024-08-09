@@ -136,10 +136,10 @@ const AggregateGeneration: React.FC<Props> = ({
         opacity: 0,
         transition: {
           width: {
-            duration: 0.3
+            duration: 0.6
           },
           opacity: {
-            duration: 0.3
+            duration: 0.6
           }
         }
       }}
@@ -161,7 +161,7 @@ const AggregateGeneration: React.FC<Props> = ({
       >
         {children.map((node, index) => {
           return (
-            <React.Fragment key={index}>
+            <React.Fragment key={node.id}>
               <div className={`
                 ${LineageTreeStyles.fatherContainer} 
                 ${LineageTreeStyles.fatherContainerOfActive} 
@@ -266,32 +266,36 @@ const AggregateGeneration: React.FC<Props> = ({
               )}
             </React.Fragment>
           )}
-        )}    
+        )}
       </div>
-
+      <AnimatePresence>
         {(((getHoveredNode()?.mates[activeMateIndex]?.children?.length || 0) > 0) ||
         ((getActiveNode()?.mates[activeMateIndex]?.children?.length || 0) > 0)) && (
-          <AnimatePresence>
-            <LineageGeneration             
-              isPreview={
-                Boolean(getHoveredNode()?.mates[activeMateIndex]?.children?.length) &&
-                !Boolean(getActiveNode()?.mates[activeMateIndex]?.children?.length)
-              }
-              previewChildCount={
-                getActiveNode()?.mates.reduce((acc, mate) => acc += (mate?.children?.length || 0), 0) ||
-                getHoveredNode()?.mates.reduce((acc, mate) => acc += (mate?.children?.length || 0), 0)
-              }
-              children={
-                getHoveredNode()?.mates[activeMateIndex]?.children?.length ? 
-                getHoveredNode()?.mates[activeMateIndex].children as Individual[] : 
-                getActiveNode()?.mates[activeMateIndex].children as Individual[]
-              }
-              isParentBeingHovered={isParentBeingHovered || typeof hoveredNodeId === "number"}
-              displayInfoCard={displayInfoCard}
-              displayNewInfoCard={displayNewInfoCard}
-            />
-          </AnimatePresence>
+          <LineageGeneration
+            key={`${children[0].id}-${activeMateIndex}-isPreview:${
+              Boolean(getHoveredNode()?.mates[activeMateIndex]?.children?.length) &&
+              !Boolean(getActiveNode()?.mates[activeMateIndex]?.children?.length)
+            }`}
+
+            isPreview={
+              Boolean(getHoveredNode()?.mates[activeMateIndex]?.children?.length) &&
+              !Boolean(getActiveNode()?.mates[activeMateIndex]?.children?.length)
+            }
+            previewChildCount={
+              getActiveNode()?.mates.reduce((acc, mate) => acc += (mate?.children?.length || 0), 0) ||
+              getHoveredNode()?.mates.reduce((acc, mate) => acc += (mate?.children?.length || 0), 0)
+            }
+            children={
+              getHoveredNode()?.mates[activeMateIndex]?.children?.length ? 
+              getHoveredNode()?.mates[activeMateIndex].children as Individual[] : 
+              getActiveNode()?.mates[activeMateIndex].children as Individual[]
+            }
+            isParentBeingHovered={isParentBeingHovered || typeof hoveredNodeId === "number"}
+            displayInfoCard={displayInfoCard}
+            displayNewInfoCard={displayNewInfoCard}
+          />
         )}
+      </AnimatePresence>
     </motion.li>
   )
 }
