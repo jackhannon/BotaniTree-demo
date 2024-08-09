@@ -4,6 +4,7 @@ import { Individual } from "../../../types";
 import { debounce } from 'lodash';
 import AggregateGeneration from "./AggregateGeneration";
 import TwoNodeGeneration from "./TwoNodeGeneration";
+import {motion} from 'framer-motion'
 
 
 type Props = {
@@ -58,7 +59,22 @@ const LineageGeneration: React.FC<Props> = ({children, displayInfoCard, displayN
             />
         }
       </ul> 
-      {(isPreview && previewChildCount) && <span className={LineageTreeStyles.previewNote}>...click to view <b>{previewChildCount}</b> more children</span>}
+      {(isPreview && previewChildCount) && 
+        <motion.span 
+          initial={{opacity:0}} 
+          animate={{
+            opacity: 1,
+            transition: {
+              opacity: {
+                duration: 0.3,
+                delay: 0.3
+              }
+            }
+          }} 
+          className={LineageTreeStyles.previewNote}>
+            ...click to view <b>{previewChildCount}</b> more children
+        </motion.span>
+        }
     </>
   )
 }

@@ -66,10 +66,12 @@ const TwoNodeGeneration: React.FC<Props> = ({
             opacity: 1,
             transition: {
               width: {
-                duration: 0.3
+                duration: 0.3,
+                delay: 0.3
               },
               opacity: {
-                duration: 0.3
+                duration: 0.3,
+                delay: 0.3
               }
             }
           }}

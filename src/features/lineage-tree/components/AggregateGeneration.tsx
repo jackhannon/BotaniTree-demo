@@ -124,10 +124,12 @@ const AggregateGeneration: React.FC<Props> = ({
         opacity: 1,
         transition: {
           width: {
-            duration: 1
+            duration: 0.3,
+            delay: 0.3
           },
           opacity: {
-            duration: 1
+            duration: 0.3,
+            delay: 0.3
           }
         }
       }}
@@ -136,11 +138,12 @@ const AggregateGeneration: React.FC<Props> = ({
         opacity: 0,
         transition: {
           width: {
-            duration: 0.6
+            duration: 0.3
           },
           opacity: {
-            duration: 0.6
-          }
+            duration: 0.3
+          },
+          ease: "easeInOut"
         }
       }}
       ref={childrenRef} 
