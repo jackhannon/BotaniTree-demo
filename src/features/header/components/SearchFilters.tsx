@@ -69,7 +69,7 @@ const SearchFilters = () => {
         </div>
       </div>
 
-      <div className={SearchBarStyles.textInputFilters}> 
+      <div className={SearchBarStyles.centerInputFilters}> 
         <div className={SearchBarStyles.descendentFilter}>
           Descendent of: 
           <div className={SearchBarStyles.inputs}> 

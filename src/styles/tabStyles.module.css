@@ -1,10 +1,9 @@
 .navTab {
   transition: .5s ease-in-out;
   cursor: pointer;
-  padding: 1rem 1rem .85rem 1rem;
+  padding: .85rem 1rem .85rem 1rem;
   width: 100%;
   color: rgb(194, 194, 194);
-
  }
 
 
@@ -14,7 +13,6 @@
   transition: border-bottom 0.2s ease-in-out;
   color: rgb(0, 0, 0);
   font-weight: 500;
-
 }   
 
 .navTab:hover {
@@ -24,4 +22,17 @@
 .tabContainer {
   margin-bottom: .8rem;
   display: flex;
+  width: 100%;
+  
+}
+
+
+@media screen and (max-width: 400px) {
+  .navTab {
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    padding: .5rem .6rem .5rem .6rem;
+    width: 100%;
+    color: rgb(194, 194, 194);
+   }
 }

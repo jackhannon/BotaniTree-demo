@@ -175,7 +175,6 @@ const CatagorySpecificInfo:React.FC<Props> = ({name, isClone, isArtificialCondit
           <div className={InfoCardStyles.imageContainer}>
             <img 
               src={images[0] || placeholder}
-              style={{ width: '400px', height: '265px', objectFit: "cover"}}
             />
           </div>
           <div className={InfoCardStyles.info}>
