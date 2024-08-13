@@ -172,7 +172,6 @@
   .checkboxFilters {
     display: flex;
     flex-direction: column;
-    border-right: 1px solid gray;
     padding-right: .4rem
   }
 
@@ -182,24 +181,14 @@
   }
 
 
-  .centerInputFilters {
+  .textInputFilters {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding: 0 .4rem 0 .4rem;
-  }
-
-  #ageAndLightFilter {
     border-left: 1px solid gray;
-    padding-right: 0px;
-  }
 
-  .descendentFilter {
-    display: flex;
-    gap: .2rem;
-    height: min-content;
   }
-
 
   .descendentFilter {
     display: flex;
@@ -250,27 +239,19 @@
     .checkboxFilters {
       display: flex;
       flex-direction: column;
-      border-bottom: 1px solid gray;
       border-right: none;
       padding-bottom: .4rem;
       padding-right: 0;
     }
   
-    .centerInputFilters {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      padding: .4rem 0;
-      border-bottom: 1px solid gray;;
+  
+    .textInputFilters {
+      border-left: none;
+      border-top: 1px solid gray;
+      padding: .4rem 0 .8rem 0;
     }
 
-    #ageAndLightFilter {
-      border-left: none;
-      display: flex;
-      flex-direction: column;
-
-      gap: 1rem;
-      padding-right: 0px;
-      padding-top: .4rem;
+    .textInputFilters:last-child {
+      padding-bottom: .4rem;
     }
   }

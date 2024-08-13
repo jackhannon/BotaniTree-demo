@@ -9,17 +9,27 @@
   z-index: 998;
 }
 
+.hideCard {
+  right: -25rem;
+  transition: right 0.2s;
+}
+
 @media screen and (max-width: 500px) {
   .cardContainer {
     position:fixed;
     display: flex;
     flex-direction: column;
 
-    width: 90%;
+    width: 18.5rem;
     height: 100vh;
     top: 0;
     background-color: rgb(255, 255, 255);
     z-index: 998;
+  }
+
+  .hideCard {
+    right: -18.5rem;
+    transition: right 0.2s;
   }
 }
 
@@ -32,10 +42,7 @@
   z-index: 1000;
 }
 
-.hideCard {
-  right: -25rem;
-  transition: right 0.2s;
-}
+
 
 .visibleCard {
   opacity: 1;
