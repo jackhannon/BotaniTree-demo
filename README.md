@@ -35,3 +35,9 @@ System Info:
  - Node version - 18.12.1
  - Browser and version - Chrome version 124.0.6367.203
  - Postgres version - 16.1
+
+## Copyright Notice
+
+© 2024, Jack Hannon. All rights reserved.
+
+This project and its contents are proprietary information. No license is granted to copy, modify, distribute, or use the code and content for any purpose without express written permission from the copyright holder.
