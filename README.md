@@ -1,8 +1,9 @@
-DISCLAIMER: This is a non-persistant demo application that demonstrates the highest value features of Botanical Lineage Tracker in a simple to access way. The information regarding technologies used does not fully apply to the this demo.
+DISCLAIMER: This is a non-persistent demo application showcasing the key features of the Botanical Lineage Tracker, which is still a work in progress. The information about the technologies used may not fully reflect this demo.
 
-Botanical Lineage Tracker is a web app that allows users to keep track of, and visualize the familial relationships of the specific plant species individuals.
 
-An example of the problem domain would suffice in understanding the utility of this application:
+Botanical Lineage Tracker is a web application designed to help users track and visualize the familial relationships of individual plants within specific species through detailed pedigrees.
+
+Use Case Example:
 
 Imagine you are interested in selecting for specific morphological or chemical characteristics within a plant species.
 Assuming you are working with hundreds or even thousands of individuals, it will prove a difficult task to keep track 
@@ -10,15 +11,14 @@ of their specific familial lineages without a GUI, which is very important if we
 characteristics.
 
 
-Features include but are not limited to:
+Key Features:
 
- - "tree view", which is a visualization tool for viewing the children of a given individual in a family tree like structure
+ - Tree View: Visualizes the lineage of a plant in a "family tree" or pedrigee structure, showing the children of any given individual.
 ![Tree View](https://i.gyazo.com/83e1788cd815af940ed616ecac4e4beb.png)
 
- - "grid view", a simplified view of individuals of a particular species that can be filtered and sorted at a fine granularity
+ - Grid View: Offers a simplified, filterable, and sortable view of individuals within a species.
 
- - low level control over each individual- water schedules, substrate compostitions, etc will default to the users species-specific
-defaults, but can manually set as having its own individual-specific parameters
+ - Detailed Controls: Provides low-level control over individual parameters such as watering schedules and substrate compositions, with defaults based on species but customizable per individual.
 
 Frontend built with:
  - React
