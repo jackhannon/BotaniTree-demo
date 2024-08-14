@@ -28,8 +28,8 @@ const TreeView: React.FC = () => {
       ? 
       <TransformWrapper
         initialScale={1}
-        maxScale={2}
-        minScale={.4}
+        maxScale={1}
+        minScale={1}
         centerOnInit={true}
         centerZoomedOut={true}
         minPositionX={0}
