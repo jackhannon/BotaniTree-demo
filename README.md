@@ -10,7 +10,7 @@ Assuming you are working with hundreds or even thousands of individuals, it will
 of their specific familial lineages without a GUI, which is very important if we are selecting for specific inherited 
 characteristics.
 
-Key Features:
+## Key Features
 
  - Tree View: Visualizes the lineage of a plant in a "family tree" or pedigree structure, showing the children of any given individual.
 ![Tree View](https://i.gyazo.com/83e1788cd815af940ed616ecac4e4beb.png)
@@ -22,6 +22,8 @@ Key Features:
 
 Some features in this application may not be easy to understand without greater familiarity with the problem domain, please reference this guide for some of those features if that is the case:
 ![guide](https://i.gyazo.com/da0934e1e41cb5036ab5a83f2539a0ed.png)
+
+## Tech stack
 
 Frontend built with:
  - React
