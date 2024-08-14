@@ -1,5 +1,5 @@
+# BotaniTree Demo
 DISCLAIMER: This is a non-persistent demo application showcasing the key features of the BotaniTree, which is still a work in progress. The information about the technologies used may not fully reflect this demo.
-
 
 BotaniTree is a web application designed to help users track and visualize the familial relationships of individual plants within specific species through detailed pedigrees.
 
