@@ -1,7 +1,7 @@
-DISCLAIMER: This is a non-persistent demo application showcasing the key features of the Botanical Lineage Tracker, which is still a work in progress. The information about the technologies used may not fully reflect this demo.
+DISCLAIMER: This is a non-persistent demo application showcasing the key features of the BotaniTree, which is still a work in progress. The information about the technologies used may not fully reflect this demo.
 
 
-Botanical Lineage Tracker is a web application designed to help users track and visualize the familial relationships of individual plants within specific species through detailed pedigrees.
+BotaniTree is a web application designed to help users track and visualize the familial relationships of individual plants within specific species through detailed pedigrees.
 
 Use Case Example:
 
