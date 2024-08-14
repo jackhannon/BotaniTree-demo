@@ -1,5 +1,5 @@
 # BotaniTree Demo
-DISCLAIMER: This is a non-persistent demo application showcasing the key features of the BotaniTree, which is still a work in progress. The information about the technologies used may not fully in reflect this demo. The backend code for the non demo version of this application is avaible [here](https://github.com/jackhannon/BotaniTree-backend).
+DISCLAIMER: This is a non-persistent demo application showcasing the key features of the BotaniTree, which is still a work in progress. The information about the technologies used may not fully in reflect this demo. The backend code for the non demo version of this application is available [here](https://github.com/jackhannon/BotaniTree-backend).
 
 BotaniTree is a web application designed to help users track and visualize the familial relationships of individual plants within specific species through detailed pedigrees.
 
