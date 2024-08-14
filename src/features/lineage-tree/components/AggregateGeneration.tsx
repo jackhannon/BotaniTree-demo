@@ -251,10 +251,10 @@ const AggregateGeneration: React.FC<Props> = ({
                 <ButtonWithHoverLabel
                   positioningStyles={getActiveNode()?.mates?.[activeMateIndex]?.children?.length || 0 > 0 ? LineageTreeStyles.addChildPosition : LineageTreeStyles.addFirstChildPosition}
                   label="Add child"
-                  ariaLabel={`add-child-of-${node.id}`}
                 >
                   <button 
                     className={LineageTreeStyles.addChild}
+                    aria-label={`add-child-of-${node.id}`}
                     onClick={
                       () => 
                         displayNewInfoCard(

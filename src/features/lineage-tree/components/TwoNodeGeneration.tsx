@@ -127,10 +127,10 @@ const TwoNodeGeneration: React.FC<Props> = ({
                 <ButtonWithHoverLabel
                   positioningStyles={node.mates[activeMateIndex[index]]?.children?.length ? LineageTreeStyles.addChildPosition : LineageTreeStyles.addFirstChildPosition}
                   label="Add child"
-                  ariaLabel={`add-child-of-${node.id}`}
                 >
                   <button 
                     className={LineageTreeStyles.addChild}
+                    aria-label={`add-child-of-${node.id}`}
                     onClick={() => displayNewInfoCard(
                       node.id,
                       node.mates[activeMateIndex[index]]?.id

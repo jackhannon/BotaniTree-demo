@@ -25,7 +25,7 @@ const SearchBar = () => {
   <div 
     className={`${SearchBarStyles.search}`} 
     ref={searchRef}>
-        <button className={SearchBarStyles.btn}>
+        <button className={SearchBarStyles.btn} aria-label='search'>
           <FontAwesomeIcon icon={faMagnifyingGlass} className={SearchBarStyles.searchIcon} />
         </button>
       <input
