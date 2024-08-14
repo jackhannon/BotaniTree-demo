@@ -28,6 +28,7 @@ const ItemCard: React.FC<Props> = ({image, id, handleClick = ()=>{}, sizeStyles,
       {image ? 
         <img className={CardStyles.image}
           src={image}
+          alt='plant'
         />
       : 
       <div className={`${CardStyles.image} ${CardStyles.noImagePlaceholder}`}>
