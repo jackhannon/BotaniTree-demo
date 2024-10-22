@@ -9,12 +9,12 @@ type Props = {
 const InfoBox:React.FC<Props> = ({styles, message}) => {
   return (
     <p 
-    id="title-validation-info" 
-    className={styles}
-  >
-    <FontAwesomeIcon icon={faInfoCircle} />
-    {message}<br />
-  </p>
+      id="title-validation-info" 
+      className={styles}
+    >
+      <FontAwesomeIcon icon={faInfoCircle} />
+      {message}<br />
+    </p>
   )
 }
 
