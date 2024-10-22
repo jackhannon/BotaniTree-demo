@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <HeaderProvider>
       <PlantProvider>
         <InfoCardProvider>
-          <RouterProvider router={router} />
+          <RouterProvider router={router} basepath={import.meta.env.BASE_URL}/>
         </InfoCardProvider>
       </PlantProvider>
     </HeaderProvider>
