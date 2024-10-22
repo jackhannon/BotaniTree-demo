@@ -7,7 +7,7 @@ import {HeaderProvider} from './context/HeaderContext'
 import {PlantProvider} from './context/PlantContext'
 import {InfoCardProvider} from './context/InfoCardContext'
 
-const router = createRouter({ routeTree })
+const router = createRouter({ routeTree, basepath: import.meta.env.BASE_URL })
 
 declare module '@tanstack/react-router' {
   interface Register {
@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <HeaderProvider>
       <PlantProvider>
         <InfoCardProvider>
-          <RouterProvider router={router} basepath={import.meta.env.BASE_URL}/>
+          <RouterProvider router={router}/>
         </InfoCardProvider>
       </PlantProvider>
     </HeaderProvider>
