@@ -3,7 +3,7 @@ DISCLAIMER: This is a non-persistent demo application showcasing the key feature
 
 BotaniTree is a web application designed to help users track and visualize the familial relationships of individual plants within specific species through detailed pedigrees.
 
-[Live Application](https://botanitree.up.railway.app/) 
+[Live Application](jackhannon.github.io/BotaniTree-demo/) 
 
 Use Case Example:
 
